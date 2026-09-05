@@ -1,0 +1,17 @@
+.navbar-color{
+    background-color:#233D4D;
+}
+.navbar-color a{
+    color:#e6e8ed;
+}
+.navbar .nav-link.active {
+    text-decoration: underline;
+    color:#FFFFFF;
+        
+}
+.navbar .nav-link:hover{
+    color:#FFFFFF;
+}
+.navbar .navbar-brand:hover{
+    color:#FFFFFF;
+}
