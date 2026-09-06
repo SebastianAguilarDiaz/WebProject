@@ -1,17 +1,35 @@
-.navbar-color{
-    background-color:#233D4D;
+.navbar-color {
+    background-color: #233D4D;
 }
-.navbar-color a{
-    color:#e6e8ed;
+
+.navbar-color a {
+    color: #e6e8ed;
 }
+
 .navbar .nav-link.active {
     text-decoration: underline;
-    color:#FFFFFF;
-        
+    color: #FFFFFF;
+
 }
-.navbar .nav-link:hover{
-    color:#FFFFFF;
+
+.navbar .nav-link:hover {
+    color: #FFFFFF;
 }
-.navbar .navbar-brand:hover{
-    color:#FFFFFF;
+
+.navbar .navbar-brand:hover {
+    color: #FFFFFF;
+}
+
+.search-bar {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+/* so the display menu button becomes white */
+.navbar-toggler {
+    border-color: white;
+}
+
+.navbar-toggler-icon {
+    filter: brightness(0) invert(1);
 }
