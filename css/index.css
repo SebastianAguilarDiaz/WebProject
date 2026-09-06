@@ -5,7 +5,11 @@ body {
 .principal-info {
     background-color: #f5f6f7;
     display: inline-block;
-    height: 300px;
+    /* height: 300px; */
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 50px;
 }
 
 .principal-title {
