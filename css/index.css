@@ -29,18 +29,18 @@ h1 {
     padding-left: auto;
 }
 
-.btn-search-oportunities {
+.btn-search-opportunities {
     background-color: #FE7F2D;
     color: #FFFFFF;
     margin-left: auto;
 }
 
-.btn-search-oportunities:hover {
+.btn-search-opportunities:hover {
     background-color: #c36222;
     color: #FFFFFF;
 }
 
-.btn-share-an-oportunity {
+.btn-share-an-opportunity {
     color: #FFFFFF;
 }
 
