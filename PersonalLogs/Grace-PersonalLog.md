@@ -1,6 +1,6 @@
 # Personal Log: Explore Page Project
 
-**Name:** Grace Valencia  
+**Developer:** Grace Valencia  
 **Date:** September 10, 2026  
 **Project / Module:** Explore Page  
 
