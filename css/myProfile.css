@@ -51,5 +51,9 @@ h3 {
     max-width: 80%;
     height: auto;
     border-radius: 100%;
+}
 
+.activity-img {
+    max-width: 50%;
+    height: auto;
 }
