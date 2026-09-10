@@ -47,38 +47,9 @@ h3 {
     font-size: 22px;
 }
 
-.how-we-work-img {
-    max-width: 100%;
+.pfp-img {
+    max-width: 80%;
     height: auto;
-    border-radius: 10%;
-}
-
-.how-we-work-texts {
-    text-align: center;
-    font: 100px;
-}
-
-.SDG-img {
-    max-width: 75%;
-    height: auto;
-    border-radius: 20%;
+    border-radius: 100%;
 
 }
-
-.card-margin {
-    margin-bottom: 10px;
-    padding-bottom: 0px;
-}
-.team-img{
-    height:100px;
-    width:100px;
-    border-radius:50%;
-    
-}
-.team-text{
-    padding-left:30px;
-}
-
-/* .left-column {
-    
-} */
