@@ -11,6 +11,7 @@
 
 **Prompt**:"How do I make the menu button in the navigation bar, the one with the three bars, turn white?"  
 
+**Tool** : ChatGPT 5.6 Luna
 
 **The Human Audit & Modifications**:  AI generated 2 css classes "navbar-toggler  navbar-toggler-icon" where it implemented a filter with brightness 0 and invert 1. Since it was a very little implementation ai didn't commit any mistake so we just tested it and it worked, so we added appropietly to the project. 
 
@@ -25,6 +26,7 @@
 
 **Prompt**:"Is there a way to have the btn and btn-success design without it being a button, so it doesn't change with hovering?"  
 
+**Tool** : ChatGPT 5.6 Luna
 
 **The Human Audit & Modifications**:  AI generated a css class which we renamed as "green-squares", also was a small implementation so AI didn't commit big mistakes, we just adjust the margin so that it could look good.
 
