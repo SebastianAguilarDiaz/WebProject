@@ -1,0 +1,26 @@
+{
+  "name": "webproject",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/SebastianAguilarDiaz/WebProject#readme",
+  "bugs": {
+    "url": "https://github.com/SebastianAguilarDiaz/WebProject/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SebastianAguilarDiaz/WebProject.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "^5.3.0",
+    "nodemon": "^3.1.14"
+  }
+}
