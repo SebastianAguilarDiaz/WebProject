@@ -157,6 +157,7 @@ Systematic Bug & Error Tracker
 
 Documentation & Reference Links
 * Bootstrap documentation - [Bootstrap](https://getbootstrap.com/)
+* Bootstrap documentation - [Bootstrap](https://getbootstrap.com/)
 * Git documentation on merging - [Git Merge Conflicts](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
  
 Next Horizon Actions
@@ -203,13 +204,13 @@ Concepts Mastered & Key Learnings
 
 
 Systematic Bug & Error Tracker 
-  * ❌ *Error Message / Behavior:* 
-  * ⚙️ *Diagnostic Action:* 
-  * ✅ *Root Cause & Resolution:* 
+  * ❌ *Error Message / Behavior:* The weren't styles in the page provided by the server.js file
+  * ⚙️ *Diagnostic Action:*  The server wasn't reading the css files
+  * ✅ *Root Cause & Resolution:*  It was missing a middleware to manage those files
 
 
 Documentation & Reference Links
-
+* Express documentation - [Express](https://expressjs.com/en/5x/starter/static-files/)
  
 Next Horizon Actions
 1. Continue with more complex endpoints
