@@ -162,12 +162,13 @@ Documentation & Reference Links
 Next Horizon Actions
 1. Continue with another HTML file from another subpage of the project
 
+---
 ### Session 5 Log Entry
  
 Session Overview
 * **Date:** 2026-10-13
 * **Module/Feature Scope:** Project restructuration
-* **Est. Time Invested:** 2 h
+* **Est. Time Invested:** 2 hours
 * **Active Developers:** Sebastian Aguilar
  
 Goals:
@@ -185,3 +186,30 @@ Systematic Bug & Error Tracker
  
 Next Horizon Actions
 1. Start with the server implementation
+
+---
+### Session 6 Log Entry
+Session Overview
+* **Date:** 2026-10-14
+* **Module/Feature Scope:** Server page rendering
+* **Est. Time Invested:** 3 hours
+* **Active Developers:** Sebastian Aguilar, 
+
+Goals:
+* [x] Implement the principal endpoint for the server
+
+Concepts Mastered & Key Learnings
+* **Express endpoints** *Mastered the express endpoints creation*
+
+
+Systematic Bug & Error Tracker 
+  * ❌ *Error Message / Behavior:* 
+  * ⚙️ *Diagnostic Action:* 
+  * ✅ *Root Cause & Resolution:* 
+
+
+Documentation & Reference Links
+
+ 
+Next Horizon Actions
+1. Continue with more complex endpoints
