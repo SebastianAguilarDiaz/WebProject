@@ -161,3 +161,27 @@ Documentation & Reference Links
  
 Next Horizon Actions
 1. Continue with another HTML file from another subpage of the project
+
+### Session 5 Log Entry
+ 
+Session Overview
+* **Date:** 2026-10-13
+* **Module/Feature Scope:** Project restructuration
+* **Est. Time Invested:** 2 h
+* **Active Developers:** Sebastian Aguilar
+ 
+Goals:
+* [x] Create de folder structure so we can continue working with the server part of the project
+
+
+Concepts Mastered & Key Learnings
+* **Express basic folder structure** *Learned how to make the basic structure for an express project*
+
+
+Systematic Bug & Error Tracker 
+  * ❌ *Error Message / Behavior:* Because of the simplicity of the activity there were no errors
+  * ⚙️ *Diagnostic Action:* 
+  * ✅ *Root Cause & Resolution:*
+ 
+Next Horizon Actions
+1. Start with the server implementation
