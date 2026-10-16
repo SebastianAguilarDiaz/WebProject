@@ -219,8 +219,8 @@ Next Horizon Actions
 ### Session 7 Log Entry
 Session Overview
 * **Date:** 2026-10-16
-* **Module/Feature Scope:** Principal endpoints
-* **Est. Time Invested:** 1 hours
+* **Module/Feature Scope:** Principal endpoints, db implementation
+* **Est. Time Invested:** 1.5 hours
 * **Active Developers:** Sebastian Aguilar, 
 
 Goals:
@@ -228,12 +228,14 @@ Goals:
 * [x] Implement the .ejs files for the page
 * [x] Create opportunity visualization page
 * [x] Create opportunity schema for mongoDB
+* [x] Create opportunity services
 
 
 
 Concepts Mastered & Key Learnings
 * **Express endpoints** *Mastered the express endpoints creation*
 * **Ejs files** *How to render an ejs file*
+* **Mongoose schema** *How to create a mongoose schema*
 
 
 Systematic Bug & Error Tracker 
