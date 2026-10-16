@@ -32,3 +32,16 @@
 
 
 **Integration & Learnings**:  It integrates with the rest of the system by allowing us to see the rank progress in the verify page, how to make css components quicker.
+---
+ 
+## Week [3] Log Entry
+**Goal:** Make clean routes for every subpage on the project and use ejs files so we can edit them easily
+
+**Prompt**:"Set up clean routes with EJS using res.render (no res.sendFile and no path import): remove the app.get with fs.readFileSync, configure one express.static middleware per required folder (/css, /js, /images), mount the router from src/routes, add a 404 view, migrate public/index.html and public/html/*.html to views/*.ejs, update all internal nav and asset references to the clean routes (/, /explore, /contribute, /verify, /myProfile, /about) and absolute paths (/css/*, /js/*, /images/*), and let the old /html/* URLs return 404 — keep the standard structure with views/ separate from routes/."  
+
+**Tool** : Opencode Muse Spark 1.3
+
+**The Human Audit & Modifications**:  AI was generating code with things that we didn't understood, so we make some corrections so that we know about everything AI was making.
+
+
+**Integration & Learnings**:  It integrates with the static part of the project by displaying it and with the server by converting the html files to ejs files so that we could easily manage them in the future.

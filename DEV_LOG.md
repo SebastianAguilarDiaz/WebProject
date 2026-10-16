@@ -220,7 +220,7 @@ Next Horizon Actions
 Session Overview
 * **Date:** 2026-10-16
 * **Module/Feature Scope:** Principal endpoints
-* **Est. Time Invested:** 3 hours
+* **Est. Time Invested:** 1 hours
 * **Active Developers:** Sebastian Aguilar, 
 
 Goals:
@@ -232,13 +232,11 @@ Concepts Mastered & Key Learnings
 
 
 Systematic Bug & Error Tracker 
-  * ❌ *Error Message / Behavior:* 
+  * ❌ *Error Message / Behavior:* There weren't errors
   * ⚙️ *Diagnostic Action:*  
   * ✅ *Root Cause & Resolution:*  
 
 
-Documentation & Reference Links
-* Express documentation - [Express](https://expressjs.com/en/5x/starter/static-files/)
  
 Next Horizon Actions
 1. Continue with the next endpoints
