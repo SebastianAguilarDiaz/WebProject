@@ -71,6 +71,7 @@
             <p class="title-description">Help build the database by sharing educational opportunities.</p>
         </div>
 
+        <form action="/contribute" method="POST">
         <div class="row justify-content-center">
 
             <!-- basic information -->
@@ -78,25 +79,23 @@
                 <h2 class="text-center text-lg-start">STEP 1: Basic Information</h2>
                 
                 <h5>TITLE</h5>
-                <input type="text" class="form-control element" placeholder="Enter title">
+                <input type="text" name="title" class="form-control element" placeholder="Enter title">
                 
                 <div class="row">
                     <div class="col-12">
 
                         <h5>TYPE</h5>
-                        <div class="dropdown w-100">
-                            <button class="btn btn-dropdown-custom dropdown-toggle w-100 text-start d-flex justify-content-between align-items-center element" type="button" id="dropdownType" data-bs-toggle="dropdown" aria-expanded="false">Select opportunity type</button>
-                            <ul class="dropdown-menu w-100" aria-labelledby="dropdownType">
-                                <li><a class="dropdown-item" href="#">Scholarships & Financial Aid</a></li>
-                                <li><a class="dropdown-item" href="#">Competitions & Contests</a></li>
-                                <li><a class="dropdown-item" href="#">Internships & Work Experiences</a></li>
-                                <li><a class="dropdown-item" href="#">Research Programs</a></li>
-                                <li><a class="dropdown-item" href="#">Conferences & Workshops</a></li>
-                                <li><a class="dropdown-item" href="#">Summer Programs & Camps</a></li>
-                                <li><a class="dropdown-item" href="#">Exchange & Study Abroad</a></li>
-                                <li><a class="dropdown-item" href="#">Courses & Certifications</a></li>
-                            </ul>
-                        </div>
+                        <select name="type" class="form-select btn-dropdown-custom element w-100">
+                            <option value="" selected>Select opportunity type</option>
+                            <option>Scholarships & Financial Aid</option>
+                            <option>Competitions & Contests</option>
+                            <option>Internships & Work Experiences</option>
+                            <option>Research Programs</option>
+                            <option>Conferences & Workshops</option>
+                            <option>Summer Programs & Camps</option>
+                            <option>Exchange & Study Abroad</option>
+                            <option>Courses & Certifications</option>
+                        </select>
 
                     </div>
                 </div>
@@ -110,19 +109,19 @@
                                         <div class="col-6 col-md-12">
 
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="math">
+                                                <input class="form-check-input" type="checkbox" name="area" value="Mathematics" id="math">
                                                 <label class="form-check-label" for="math">Mathematics</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="cs">
+                                                <input class="form-check-input" type="checkbox" name="area" value="Computer Science" id="cs">
                                                 <label class="form-check-label" for="cs">Computer Science</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="arts">
+                                                <input class="form-check-input" type="checkbox" name="area" value="Arts & Design" id="arts">
                                                 <label class="form-check-label" for="arts">Arts & Design</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="eng">
+                                                <input class="form-check-input" type="checkbox" name="area" value="Engineering" id="eng">
                                                 <label class="form-check-label" for="eng">Engineering</label>
                                             </div>
 
@@ -135,21 +134,18 @@
                     <div class="col-lg-8">
 
                         <h5>GRADE LEVEL</h5>
-                        <div class="dropdown w-100">
-                            <button class="btn btn-dropdown-custom dropdown-toggle w-100 text-start d-flex justify-content-between align-items-center element" type="button" id="dropdownGrade" data-bs-toggle="dropdown" aria-expanded="false">Select grade level</button>
-                            <ul class="dropdown-menu w-100" aria-labelledby="dropdownGrade">
-                                <li><a class="dropdown-item" href="#">Middle School</a></li>
-                                <li><a class="dropdown-item" href="#">High School</a></li>
-                                <li><a class="dropdown-item" href="#">Undergraduate</a></li>
-                                <li><a class="dropdown-item" href="#">Postgraduate / Master's</a></li>
-                                <li><a class="dropdown-item" href="#">Doctorate / PhD</a></li>
-                                <li><a class="dropdown-item" href="#">Open to all levels</a></li>
-                            </ul>
-                        </div>
+                        <select name="gradeLevels" class="form-select btn-dropdown-custom element w-100">
+                            <option value="" selected>Select grade level</option>
+                            <option>Middle School</option>
+                            <option>High School</option>
+                            <option>Undergraduate</option>
+                            <option>Postgraduate / Master's</option>
+                            <option>Doctorate / PhD</option>
+                            <option>Open to all levels</option>
+                        </select>
 
-                        <div class="d-flex justify-content-center justify-content-lg-start">
-                            <button class="btn btn-upload mt-3 text-center element"><i class="bi bi-upload me-2"></i>Upload image</button>
-                        </div>
+                        <h5 class="mt-3">IMAGE URL</h5>
+                        <input type="url" name="imageUrl" class="form-control element" placeholder="https://...">
 
                     </div>
                 </div>
@@ -161,35 +157,36 @@
                 <div class="row">
                     <div class="col-lg-6 d-flex flex-column">
                         <h5>DESCRIPTION</h5>
-                        <textarea name="description element" class="form-control resize-none flex-grow-1 element" placeholder="Write a brief description"></textarea>
+                        <textarea name="description" class="form-control resize-none flex-grow-1 element" placeholder="Write a brief description"></textarea>
                     </div>
                     <div class="col-lg-6">
                         <h5>DEADLINE</h5>
-                        <input type="date" class="form-control element">
+                        <input type="date" name="deadline" class="form-control element">
 
                         <h5>LOCATION</h5>
-                        <input type="text" class="form-control element" placeholder="City, country or online">
+                        <input type="text" name="location" class="form-control element" placeholder="City, country or online">
                     </div>
                     <div class="col-lg-6"></div>
                 </div>
 
                 <h5>URL</h5>
-                <input type="text" class="form-control element" placeholder="Website URL">
+                <input type="text" name="url" class="form-control element" placeholder="Website URL">
 
                 <h5>KEYWORDS/TAGS</h5>
-                <input type="text" class="form-control element" placeholder="Comma-separated tags">
+                <input type="text" name="tags" class="form-control element" placeholder="Comma-separated tags">
             </div>
         </div>
 
         <!-- buttons -->
         <div class="row justify-content-center mt-4">
             <div class="col-auto">
-                <button class="btn btn-save">SAVE AS DRAFT</button>
+                <button type="submit" name="status" value="Draft" class="btn btn-save">SAVE AS DRAFT</button>
             </div>
             <div class="col-auto">
-                <button class="btn btn-success btn-submit">SUBMIT FOR VERIFICATION</button>
+                <button type="submit" name="status" value="Pending" class="btn btn-success btn-submit">SUBMIT FOR VERIFICATION</button>
             </div>
         </div>
+        </form>
 
     </div>
 
