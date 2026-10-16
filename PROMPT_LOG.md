@@ -47,3 +47,17 @@
 
 
 **Integration & Learnings**:  It integrates with the static part of the project by displaying it and with the server by converting the html files to ejs files so that we could easily manage them in the future.
+
+---
+
+## Week [4] Log Entry
+**Goal:** Make the contribute form send data with POST and make explore list the opportunities from the database.
+
+**Prompt**:"Make the contribute form send data with POST to /contribute (no JS for the dropdowns, keep the options as they are), put the POST route in a new file, add a middleware to parse the tags, don't pass req.body directly to create, and make explore list the opportunities from the database with cards linking to the detail page."  
+
+**Tool** : Opencode Muse Spark 1.3
+
+**The Human Audit & Modifications**:  AI wanted to use path import and redirects so we told it not to, AI changed the select options and we told it to revert them because it broke the schema, AI put normalization logic in the schema and we told it to remove it because the middleware handles that, AI passed req.body directly to create and we told it to whitelist only the form fields, we also told AI to leave optional fields as undefined so a middleware can catch the errors later and to keep views separate from routes. 
+
+
+**Integration & Learnings**:  It integrates with the database by saving what the user shares in contribute and showing it in explore and in the opportunity detail page, we learned how a middleware parses data before it reaches the database.
