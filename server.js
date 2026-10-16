@@ -1,18 +1,22 @@
 import express from "express";
-import fs from "fs";
 import bodyParser from "body-parser";
-// import path from "path";
+import principalRoutes from "./src/routes/principalRoutes.js";
+
 const app = express();
 const PORT=3000;
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.set("view engine", "ejs");
+app.set("views", "./views");
 
-app.use(express.static("./public/"));
+app.use("/css", express.static("./public/css"));
+app.use("/js", express.static("./public/js"));
+app.use("/images", express.static("./public/images"));
 
-app.get("/",(req,res,next)=>{
-  const file= fs.readFileSync("./public/index.html","utf-8");
-  res.send(file);
+app.use("/", principalRoutes);
 
+app.use((req, res) => {
+  res.status(404).render("404");
 });
 
 
