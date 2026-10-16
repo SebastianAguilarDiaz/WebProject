@@ -229,6 +229,8 @@ Goals:
 * [x] Create opportunity visualization page
 * [x] Create opportunity schema for mongoDB
 * [x] Create opportunity services
+* [x] Connect with the DB
+
 
 
 
