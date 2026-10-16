@@ -109,7 +109,7 @@
                         <p class="detail-value"><%= typeof area !== 'undefined' && area ? (Array.isArray(area) ? area.join(', ') : area) : '' %></p>
 
                         <h5>GRADE LEVEL</h5>
-                        <p class="detail-value"><%= typeof gradeLevel !== 'undefined' && gradeLevel ? gradeLevel : '' %></p>
+                        <p class="detail-value"><%= typeof gradeLevels !== 'undefined' && gradeLevels ? (Array.isArray(gradeLevels) ? gradeLevels.join(', ') : gradeLevels) : '' %></p>
 
                         <h5>DEADLINE</h5>
                         <p class="detail-value"><%= typeof deadline !== 'undefined' && deadline ? deadline : '' %></p>

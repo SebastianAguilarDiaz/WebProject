@@ -1,6 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import principalRoutes from "./src/routes/principalRoutes.js";
+import opportunityRoutes from "./src/routes/opportunityRoutes.js";
 import { loadEnvFile } from "node:process";
 import {connectDB} from "./config/db.js";
 const app = express();
@@ -29,6 +30,7 @@ app.use("/js", express.static("./public/js"));
 app.use("/images", express.static("./public/images"));
 
 app.use("/", principalRoutes);
+app.use("/", opportunityRoutes);
 
 app.use((req, res) => {
   res.status(404).render("404");
