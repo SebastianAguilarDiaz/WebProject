@@ -50,10 +50,9 @@
 
 ---
 
-## Week [4] Log Entry
 **Goal:** Make the contribute form send data with POST and make explore list the opportunities from the database.
 
-**Prompt**:"Make the contribute form send data with POST to /contribute (no JS for the dropdowns, keep the options as they are), put the POST route in a new file, add a middleware to parse the tags, don't pass req.body directly to create, and make explore list the opportunities from the database with cards linking to the detail page."  
+**Prompt**:"Make the contribute form send data with POST to /contribute, put the POST route in a new file, add a middleware to parse the tags, don't pass req.body directly to create, and make explore list the opportunities from the database with cards linking to the detail page."  
 
 **Tool** : Opencode Muse Spark 1.3
 
