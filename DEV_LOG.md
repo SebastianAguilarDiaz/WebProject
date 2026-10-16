@@ -249,3 +249,34 @@ Systematic Bug & Error Tracker
  
 Next Horizon Actions
 1. Continue with the next endpoints and mongoDB 
+
+---
+### Session 8 Log Entry
+Session Overview
+* **Date:** 2026-10-16
+* **Module/Feature Scope:** Contribute form POST & dynamic Explore listing
+* **Est. Time Invested:** 2 hours
+* **Active Developers:** Sebastian Aguilar, 
+
+Goals:
+* [x] Make the contribute form send data with POST
+* [x] Create parseOpportunity middleware for the tags
+* [x] Create opportunityRoutes file with the POST route
+* [x] Change upload image button for an image URL field
+* [x] Make explore list the opportunities from the database
+* [x] Make the opportunity detail page read from the database
+
+Concepts Mastered & Key Learnings
+* **Express middleware** *Learned how a middleware parses the form data before it reaches the database*
+* **Ejs loops** *Learned how to render the explore cards from the database*
+
+
+Systematic Bug & Error Tracker 
+  * ❌ *Error Message / Behavior:* The type selected in contribute didn't show in the detail page
+  * ⚙️ *Diagnostic Action:* Checked the detail route and it wasn't reading from the database, only passing the id
+  * ✅ *Root Cause & Resolution:* Changed the route so it reads the opportunity with findOpportunity and passes all the fields to the view
+
+
+ 
+Next Horizon Actions
+1. Implement the search and filters in explore
