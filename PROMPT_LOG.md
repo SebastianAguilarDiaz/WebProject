@@ -32,6 +32,8 @@
 
 
 **Integration & Learnings**:  It integrates with the rest of the system by allowing us to see the rank progress in the verify page, how to make css components quicker.
+
+
 ---
  
 ## Week [3] Log Entry
