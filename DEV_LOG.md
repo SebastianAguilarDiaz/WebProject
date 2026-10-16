@@ -214,3 +214,31 @@ Documentation & Reference Links
  
 Next Horizon Actions
 1. Continue with more complex endpoints
+
+---
+### Session 7 Log Entry
+Session Overview
+* **Date:** 2026-10-16
+* **Module/Feature Scope:** Principal endpoints
+* **Est. Time Invested:** 3 hours
+* **Active Developers:** Sebastian Aguilar, 
+
+Goals:
+* [x] Implement the principal pages endpointst
+* [x] Implement the .ejs files for the page
+
+Concepts Mastered & Key Learnings
+* **Express endpoints** *Mastered the express endpoints creation*
+
+
+Systematic Bug & Error Tracker 
+  * ❌ *Error Message / Behavior:* 
+  * ⚙️ *Diagnostic Action:*  
+  * ✅ *Root Cause & Resolution:*  
+
+
+Documentation & Reference Links
+* Express documentation - [Express](https://expressjs.com/en/5x/starter/static-files/)
+ 
+Next Horizon Actions
+1. Continue with the next endpoints
