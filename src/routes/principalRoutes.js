@@ -27,4 +27,8 @@ router.get('/',(req,res,next)=>{
   res.render("verify");
 })
 
+.get('/opportunity/:id',(req,res,next)=>{
+  res.render("opportunity", { id: req.params.id });
+})
+
 export default router;

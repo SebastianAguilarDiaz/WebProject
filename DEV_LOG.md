@@ -226,9 +226,14 @@ Session Overview
 Goals:
 * [x] Implement the principal pages endpointst
 * [x] Implement the .ejs files for the page
+* [x] Create opportunity visualization page
+* [x] Create opportunity schema for mongoDB
+
+
 
 Concepts Mastered & Key Learnings
 * **Express endpoints** *Mastered the express endpoints creation*
+* **Ejs files** *How to render an ejs file*
 
 
 Systematic Bug & Error Tracker 
@@ -239,4 +244,4 @@ Systematic Bug & Error Tracker
 
  
 Next Horizon Actions
-1. Continue with the next endpoints
+1. Continue with the next endpoints and mongoDB 
