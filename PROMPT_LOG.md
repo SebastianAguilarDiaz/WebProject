@@ -50,6 +50,7 @@
 
 ---
 
+## Week [4] Log Entry
 **Goal:** Make the contribute form send data with POST and make explore list the opportunities from the database.
 
 **Prompt**:"Make the contribute form send data with POST to /contribute, put the POST route in a new file, add a middleware to parse the tags, don't pass req.body directly to create, and make explore list the opportunities from the database with cards linking to the detail page."  
@@ -60,3 +61,16 @@
 
 
 **Integration & Learnings**:  It integrates with the database by saving what the user shares in contribute and showing it in explore and in the opportunity detail page, we learned how a middleware parses data before it reaches the database.
+
+---
+
+**Goal:** Make the explore filters work (by subject, by level and by type).
+
+**Prompt**:"Create the services for the explore filters (by subject, by level and by type): read the query in a middleware and normalize it to arrays, translate it into a Mongo filter in the service, wrap the filters in a single GET form so they are sent, and generate the checkboxes from the schema enums so the values always match."  
+
+**Tool** : Opencode DeepSeek V4.1 Flash
+
+**The Human Audit & Modifications**:  AI first put the filters inside a broken form, so we told it to fix it with a single GET form and a real submit button. AI kept the country/location filter but the location field is free text, so we told it to remove it and add a type filter instead. AI put the toArray helper inside the service, so we told it to handle it as a middleware like parseOpportunity. The filter function had too many lines, so we told AI to make it simpler. We also told AI not to implement the search bar yet.
+
+
+**Integration & Learnings**:  It integrates with the database by filtering the opportunities in explore so only the ones that match the checkboxes are shown, and with the schema by reading the enums so the filter values are always valid. We learned how to read the query string and turn it into a Mongo filter.

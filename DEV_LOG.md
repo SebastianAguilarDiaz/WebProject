@@ -280,3 +280,39 @@ Systematic Bug & Error Tracker
  
 Next Horizon Actions
 1. Implement the search and filters in explore
+
+---
+### Session 9 Log Entry
+Session Overview
+* **Date:** 2026-10-17
+* **Module/Feature Scope:** Explore filters (subject, level and type)
+* **Est. Time Invested:** 2 hours
+* **Active Developers:** Sebastian Aguilar
+
+Goals:
+* [x] Fix the explore form so the filters can be sent
+* [x] Create a middleware to normalize the query to arrays
+* [x] Create the service to translate the filters into a Mongo filter
+* [x] Generate the checkboxes from the schema enums
+* [x] Remove the country/location filter and add a type filter
+* [x] Keep the selected filters checked after reloading
+
+Concepts Mastered & Key Learnings
+* **Query string** *Learned how to read the filters from the URL with req.query*
+* **Mongo filters** *Learned how to use $in so a filter matches any value of a list*
+* **Ejs with the schema enums** *Learned how to render the checkboxes from the model enums so they never mismatch*
+
+Systematic Bug & Error Tracker 
+  * ❌ *Error Message / Behavior:* The filters did nothing, clicking Explore didn't send anything
+  * ⚙️ *Diagnostic Action:* Checked the explore form and saw nested forms and an Explore button that was a link
+  * ✅ *Root Cause & Resolution:* Wrapped everything in a single GET form and used a submit button
+
+  * ❌ *Error Message / Behavior:* The level filter values (Graduate, K-12) didn't exist in the schema
+  * ⚙️ *Diagnostic Action:* Compared the checkbox values with the gradeLevels enum in the model
+  * ✅ *Root Cause & Resolution:* Generated the checkboxes from the schema enums
+
+Documentation & Reference Links
+* MongoDB $in operator - [$in](https://www.mongodb.com/docs/manual/reference/operator/query/in/)
+
+Next Horizon Actions
+1. Implement the search bar in explore 
