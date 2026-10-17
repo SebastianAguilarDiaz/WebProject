@@ -1,5 +1,7 @@
 import express from "express";
-import { findOpportunity, findOpportunities } from "../../services/opportunity-service.js";
+import { findOpportunity, findOpportunities, buildOpportunityFilter } from "../../services/opportunity-service.js";
+import { OPPORTUNITY_AREAS, OPPORTUNITY_GRADE_LEVELS, OPPORTUNITY_TYPES } from "../../models/Opportunity.js";
+import { parseExploreFilters } from "../middleware/parseExploreFilters.js";
 
 
 const router = express.Router();
@@ -16,10 +18,17 @@ router.get('/',(req,res,next)=>{
   res.render("contribute");
 })
 
-.get('/explore',async (req,res,next)=>{
+.get('/explore',parseExploreFilters,async (req,res,next)=>{
   try {
-    const opportunities = await findOpportunities({});
-    res.render("explore", { opportunities });
+    const filter = buildOpportunityFilter(req.filters);
+    const opportunities = await findOpportunities(filter);
+    res.render("explore", {
+      opportunities,
+      OPPORTUNITY_AREAS,
+      OPPORTUNITY_GRADE_LEVELS,
+      OPPORTUNITY_TYPES,
+      selected: req.filters
+    });
   } catch (err) {
     next(err);
   }

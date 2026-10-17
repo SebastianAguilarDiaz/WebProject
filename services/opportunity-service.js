@@ -20,4 +20,15 @@ export const findOpportunities = async (filter = {}) => {
     .catch((dbError) => console.error(dbError.message));
 };
 
+// Translates the normalized explore filters into a Mongo filter.
+export const buildOpportunityFilter = (filters) => {
+  const filter = {};
+
+  if (filters.area.length) filter.area = { $in: filters.area };
+  if (filters.level.length) filter.gradeLevels = { $in: filters.level };
+  if (filters.type.length) filter.type = { $in: filters.type };
+
+  return filter;
+};
+
 

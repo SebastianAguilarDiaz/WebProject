@@ -66,7 +66,7 @@
 
 
     <div class="container">   
-        <form action="/search" method="post">
+        <form action="/explore" method="GET">
          <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="title-container mb-2">
             
@@ -77,13 +77,13 @@
                 </div>
                 <div class="row mb-3 justify-content-center">
                     <div class="col-8 col-md-8">
-                        <form class="d-flex search-bar" role="search"> 
+                        <div class="d-flex search-bar"> 
                             <input class="form-control me-2" id="search-bar" type="search" placeholder="Search">
-                        </form>
+                        </div>
                     </div>
 
                     <div class="col-4 col-md-2">
-                        <a class="btn btn-explore-filter" type="submit">Explore</a>
+                        <button class="btn btn-explore-filter" type="submit">Explore</button>
                     </div>
                 </div>
             </div>
@@ -97,66 +97,49 @@
                                 
                             </div>
 
+                            <% const chosen = typeof selected !== 'undefined' ? selected : { area: [], level: [], type: [] }; %>
+
                             <div class="row">
                                 <div class="col-6 col-md-12 mb-3">
                                     <label class="form-label small fw-bold text-secondary mb-1">
                                         Filter By Subject
                                     </label>
+                                    <% OPPORTUNITY_AREAS.forEach(function(area) { %>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="math">
-                                        <label class="form-check-label" for="math">Mathematics</label>
+                                        <input class="form-check-input" type="checkbox" name="area"
+                                            value="<%= area %>" id="area-<%= area %>"
+                                            <%= chosen.area.includes(area) ? 'checked' : '' %>>
+                                        <label class="form-check-label" for="area-<%= area %>"><%= area %></label>
                                     </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="cs">
-                                        <label class="form-check-label" for="cs">Computer Science</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="arts">
-                                        <label class="form-check-label" for="arts">Arts & Design</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="eng">
-                                        <label class="form-check-label" for="eng">Engineering</label>
-                                    </div>
-                                </div>
-                                
-                                <div class="col-6 col-md-12 mb-3">
-                                    <label class="form-label small fw-bold text-secondary mb-1">
-                                        Filter By Level
-                                    </label>                                <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="undergraduate">
-                                        <label class="form-check-label" for="undergraduate">Undergraduate</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="graduate">
-                                        <label class="form-check-label" for="graduate">Graduate</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="k-12">
-                                        <label class="form-check-label" for="k-12">K - 12</label>
-                                    </div>
+                                    <% }); %>
                                 </div>
 
                                 <div class="col-6 col-md-12 mb-3">
                                     <label class="form-label small fw-bold text-secondary mb-1">
-                                        Filter By Country/Location
+                                        Filter By Level
                                     </label>
+                                    <% OPPORTUNITY_GRADE_LEVELS.forEach(function(level) { %>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="mexico">
-                                        <label class="form-check-label" for="mexico">Mexico</label>
+                                        <input class="form-check-input" type="checkbox" name="level"
+                                            value="<%= level %>" id="level-<%= level %>"
+                                            <%= chosen.level.includes(level) ? 'checked' : '' %>>
+                                        <label class="form-check-label" for="level-<%= level %>"><%= level %></label>
                                     </div>
+                                    <% }); %>
+                                </div>
+
+                                <div class="col-6 col-md-12 mb-3">
+                                    <label class="form-label small fw-bold text-secondary mb-1">
+                                        Filter By Type
+                                    </label>
+                                    <% OPPORTUNITY_TYPES.forEach(function(type) { %>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="usa">
-                                        <label class="form-check-label" for="usa">USA</label>
+                                        <input class="form-check-input" type="checkbox" name="type"
+                                            value="<%= type %>" id="type-<%= type %>"
+                                            <%= chosen.type.includes(type) ? 'checked' : '' %>>
+                                        <label class="form-check-label" for="type-<%= type %>"><%= type %></label>
                                     </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="canada">
-                                        <label class="form-check-label" for="canada">Canada</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="international">
-                                        <label class="form-check-label" for="internationl">International</label>
-                                    </div>
+                                    <% }); %>
                                 </div>
                             </div>
                     </div>
@@ -187,7 +170,7 @@
                             </div>
                             <% }); %>
                             <% if (!(typeof opportunities !== 'undefined' && opportunities && opportunities.length)) { %>
-                            <p>No hay oportunidades todavía. ¡Sé la primera persona en <a href="/contribute">compartir una</a>!</p>
+                            <p>There isn't any opportunity yet.<a href="/contribute"> Clic to share one!</a>!</p>
                             <% } %>
 
                             <div class="container">   
