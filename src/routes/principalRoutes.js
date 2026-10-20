@@ -1,13 +1,18 @@
 import express from "express";
-import { findOpportunity, findOpportunities, buildOpportunityFilter } from "../../services/opportunity-service.js";
+import { findOpportunity, findOpportunities, findFeaturedOpportunities, buildOpportunityFilter } from "../../services/opportunity-service.js";
 import { OPPORTUNITY_AREAS, OPPORTUNITY_GRADE_LEVELS, OPPORTUNITY_TYPES } from "../../models/Opportunity.js";
 import { parseExploreFilters } from "../middleware/parseExploreFilters.js";
 
 
 const router = express.Router();
 
-router.get('/',(req,res,next)=>{
-  res.render("index");
+router.get('/',async (req,res,next)=>{
+  try {
+    const featuredOpportunities = await findFeaturedOpportunities();
+    res.render("index", { featuredOpportunities });
+  } catch (err) {
+    next(err);
+  }
 })
 
 .get('/about',(req,res,next)=>{
@@ -38,8 +43,13 @@ router.get('/',(req,res,next)=>{
   res.render("myProfile");
 })
 
-.get('/verify',(req,res,next)=>{
-  res.render("verify");
+.get('/verify',async (req,res,next)=>{
+  try {
+    const pendingOpportunities = await findOpportunities({ status: 'Pending' });
+    res.render("verify", { pendingOpportunities });
+  } catch (err) {
+    next(err);
+  }
 })
 
 .get('/opportunity/:id',async (req,res,next)=>{

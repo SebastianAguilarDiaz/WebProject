@@ -96,51 +96,25 @@
             <!-- cards row -->
             <div class="col-12 col-lg-6">
                 <div class="row">
-                    <!-- card 1 -->
-                    <div class="col-6 col-lg-4 card-margin" id="card1">
+                    <% const featured = typeof featuredOpportunities !== 'undefined' && featuredOpportunities ? featuredOpportunities : []; %>
+                    <% featured.forEach(function(o) { %>
+                    <div class="col-6 col-lg-4 card-margin">
                         <div class="card h-100">
                             <div class="card-body d-flex flex-column">
                                 <img class="card-images"
-                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5Xv3ZzFHKycZAsxw-y8h4twqQrifM3de2Ae3z_DJGzw&s=10"
-                                    alt="FeaturedOportunity1">
-                                <h5 class="card-title">UP</h5>
-                                <p class="card-text">Opendoors.</p>
+                                    src="<%= o.imageUrl ? o.imageUrl : '/images/pfp.png' %>"
+                                    alt="<%= o.title %>">
+                                <h5 class="card-title"><%= o.title %></h5>
+                                <p class="card-text"><%= o.description %></p>
                                 <!-- Button goes here -->
-                                <a href="/opportunity/1" class="btn btn-primary mt-auto">View More</a>
+                                <a href="/opportunity/<%= o._id %>" class="btn btn-primary mt-auto">View More</a>
                             </div>
                         </div>
                     </div>
-
-                    <!-- card 2 -->
-                    <div class="col-6 col-lg-4 card-margin" id="card2">
-                        <div class="card h-100">
-                            <div class="card-body d-flex flex-column">
-                                <img class="card-images"
-                                    src="https://news.icpc.global/wp-content/uploads/2024/09/2024-scaled.jpg"
-                                    alt="FeaturedOportunity2">
-                                <h5 class="card-title">ICPC</h5>
-                                <p class="card-text">Intertational College Programming Contest.</p>
-                                <!-- Button goes here -->
-                                <a href="/opportunity/1" class="btn btn-primary mt-auto">View More</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- card 3 -->
-                    <div class="col-6 col-lg-4 card-margin" id="card3">
-                        <div class="card h-100">
-                            <div class="card-body d-flex flex-column">
-                                <img class="card-images"
-                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVIJM2xSN-bL4jCeesKQ9HvoPoMrelgyDTwZ0tZo7tXgwpCS3fIxkAqiA&s=10"
-                                    alt="FeaturedOportunity3">
-                                <h5 class="card-title">UNAM</h5>
-                                <p class="card-text">Admition exam.</p>
-                                <!-- Button goes here -->
-                                <a href="/opportunity/1" class="btn btn-primary mt-auto">View More</a>
-                            </div>
-                        </div>
-                    </div>
-
-
+                    <% }); %>
+                    <% if (!featured.length) { %>
+                    <p>There are no featured opportunities yet.</p>
+                    <% } %>
                 </div>
 
 
