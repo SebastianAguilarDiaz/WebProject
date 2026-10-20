@@ -79,21 +79,6 @@ hr {
     font-size:18px;
 }
 
-.btn-save {
-    background-color: #FE7F2D;
-    color: white;
-    margin: 5px 0px;
-    text-align: left;
-    font-size: 18px;
-}
-
-.btn-save:hover,
-.btn-save:focus,
-.btn-save:active {
-    background-color: #c36222;
-    color: white;
-}
-
 .btn-upload {
     background-color: #ffffff;
     border: 1px solid #adafb7;

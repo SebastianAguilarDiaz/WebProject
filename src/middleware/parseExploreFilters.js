@@ -6,7 +6,8 @@ export const parseExploreFilters = (req, res, next) => {
   req.filters = {
     area: toArray(req.query.area),
     level: toArray(req.query.level),
-    type: toArray(req.query.type)
+    type: toArray(req.query.type),
+    q: (req.query.q || '').trim()
   };
 
   next();

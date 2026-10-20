@@ -23,10 +23,17 @@ export const findOpportunities = async (filter = {}) => {
 // Translates the normalized explore filters into a Mongo filter.
 export const buildOpportunityFilter = (filters) => {
   const filter = {};
-
+  filter.status = 'Verified';
   if (filters.area.length) filter.area = { $in: filters.area };
   if (filters.level.length) filter.gradeLevels = { $in: filters.level };
   if (filters.type.length) filter.type = { $in: filters.type };
+
+  if (filters.q) {
+    // Escape regex characters so a search like "C++" does not break.
+    const safe = filters.q.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const regex = new RegExp(safe, "i");
+    filter.$or = [{ title: regex }, { description: regex }];
+  }
 
   return filter;
 };
