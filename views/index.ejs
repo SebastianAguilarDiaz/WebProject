@@ -96,7 +96,9 @@
             <!-- cards row -->
             <div class="col-12 col-lg-6">
                 <div class="row">
+                    <%# Featured opportunities passed by GET /: the 3 verified ones with the most votes. %>
                     <% const featured = typeof featuredOpportunities !== 'undefined' && featuredOpportunities ? featuredOpportunities : []; %>
+                    <%# Render one card per featured opportunity. %>
                     <% featured.forEach(function(o) { %>
                     <div class="col-6 col-lg-4 card-margin">
                         <div class="card h-100">

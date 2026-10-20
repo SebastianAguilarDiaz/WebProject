@@ -6,6 +6,7 @@ import { parseExploreFilters } from "../middleware/parseExploreFilters.js";
 
 const router = express.Router();
 
+// Home page: shows the 3 verified opportunities with the most votes.
 router.get('/',async (req,res,next)=>{
   try {
     const featuredOpportunities = await findFeaturedOpportunities();
@@ -15,14 +16,17 @@ router.get('/',async (req,res,next)=>{
   }
 })
 
+// Static page with information about the project.
 .get('/about',(req,res,next)=>{
   res.render("about");
 })
 
+// Static page with the Contribute form.
 .get('/contribute',(req,res,next)=>{
   res.render("contribute");
 })
 
+// Explore: builds the Mongo filter from the query string and lists the results.
 .get('/explore',parseExploreFilters,async (req,res,next)=>{
   try {
     const filter = buildOpportunityFilter(req.filters);
@@ -39,10 +43,12 @@ router.get('/',async (req,res,next)=>{
   }
 })
 
+// Static user profile page.
 .get('/myProfile',(req,res,next)=>{
   res.render("myProfile");
 })
 
+// Verify: shows the queue of pending contributions.
 .get('/verify',async (req,res,next)=>{
   try {
     const pendingOpportunities = await findOpportunities({ status: 'Pending' });
@@ -52,6 +58,7 @@ router.get('/',async (req,res,next)=>{
   }
 })
 
+// Opportunity detail: loads one opportunity and passes its fields to the view.
 .get('/opportunity/:id',async (req,res,next)=>{
   try {
     const opportunity = await findOpportunity(req.params.id);

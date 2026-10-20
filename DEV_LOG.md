@@ -316,3 +316,120 @@ Documentation & Reference Links
 
 Next Horizon Actions
 1. Implement the search bar in explore 
+
+---
+
+### Session 10 Log Entry
+Session Overview
+* **Date:** 2026-10-19
+* **Module/Feature Scope:** Explore search bar, dynamic Verify queue, Draft removal and seed data
+* **Est. Time Invested:** 3 hours
+* **Active Developers:** Sebastian Aguilar
+
+Goals:
+* [x] Implement the Explore search bar by title and description
+* [x] Escape special characters before building the regex
+* [x] Render the pending opportunities of the Verify queue from the database
+* [x] Remove the Draft status from the model, views and CSS
+* [x] Remove the decorative icons from the queue cards
+* [x] Seed 50 opportunities from the CSV files
+
+Concepts Mastered & Key Learnings
+* **Regex search:** *Learned how to search text with a case-insensitive regex and how to escape special characters.*
+* **Mongo $or:** *Learned how to match a search term in more than one field.*
+* **EJS loops:** *Learned how to render the Verify queue from the pending opportunities passed by the route.*
+
+Systematic Bug & Error Tracker
+  * ❌ *Error Message / Behavior:* Searching for text with special characters, like C++, broke the regular expression
+  * ⚙️ *Diagnostic Action:* Tested the search with symbols and reviewed how the regex was built
+  * ✅ *Root Cause & Resolution:* Escaped the special regex characters before creating the RegExp
+
+Documentation & Reference Links
+* MongoDB $or operator - [$or](https://www.mongodb.com/docs/manual/reference/operator/query/or/)
+* MDN Regular expressions - [RegExp](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions)
+
+Next Horizon Actions
+1. Implement the voting system and the trust score
+
+---
+
+### Session 11 Log Entry
+Session Overview
+* **Date:** 2026-10-19
+* **Module/Feature Scope:** Voting system, trust score and post-vote redirects
+* **Est. Time Invested:** 3 hours
+* **Active Developers:** Sebastian Aguilar
+
+Goals:
+* [x] Add validVotes and invalidVotes to the voting flow
+* [x] Calculate trustScore as the percentage of valid votes
+* [x] Delete the opportunity when it reaches 100 votes with less than 70% trust
+* [x] Change the status to Verified when it reaches 100 votes with 70% trust or more
+* [x] Apply the rules to opportunities that were already Verified
+* [x] Redirect to the detail when the opportunity is not deleted
+* [x] Redirect to Explore when a Verified opportunity is deleted
+* [x] Redirect to Verify when a Pending opportunity is deleted
+* [x] Fix the NaN error caused by missing vote counters
+
+Concepts Mastered & Key Learnings
+* **Mongoose updates:** *Learned how to load a document, modify its counters and save it.*
+* **Percentage calculation:** *Learned how to compute the trust score with Math.round.*
+* **Status-based redirects:** *Learned how to return the previous status from the service so the route can decide where to send the user.*
+
+Systematic Bug & Error Tracker
+  * ❌ *Error Message / Behavior:* Voting returned a 500 error on opportunities that did not have validVotes or invalidVotes
+  * ⚙️ *Diagnostic Action:* Inspected in MongoDB and saw that both counters were undefined
+  * ✅ *Root Cause & Resolution:* Initialized both counters with (value || 0) before adding the vote, avoiding a NaN that Mongoose rejected
+
+  * ❌ *Error Message / Behavior:* Every vote redirected to /verify, even when the user came from an opportunity detail
+  * ⚙️ *Diagnostic Action:* Reviewed the vote route and the status of the voted opportunity
+  * ✅ *Root Cause & Resolution:* Returned the status before the vote and redirected to the detail, Explore or Verify depending on whether it was deleted
+
+  * ❌ *Error Message / Behavior:* The 70% boundary was not defined
+  * ⚙️ *Diagnostic Action:* Reviewed the rejection and verification rules
+  * ✅ *Root Cause & Resolution:* Defined that 70% or more verifies and only less than 70% deletes
+
+Documentation & Reference Links
+* Mongoose findByIdAndDelete - [findByIdAndDelete](https://mongoosejs.com/docs/api/model.html#Model.findByIdAndDelete())
+* MDN Math.round - [Math.round](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round)
+
+Next Horizon Actions
+1. Improve the images and the home page with dynamic data
+
+---
+
+### Session 12 Log Entry
+Session Overview
+* **Date:** 2026-10-19
+* **Module/Feature Scope:** Default avatar, Explore cleanup and dynamic Featured Opportunities
+* **Est. Time Invested:** 2 hours
+* **Active Developers:** Sebastian Aguilar
+
+Goals:
+* [x] Generate a ui-avatars image when the opportunity has no image URL
+* [x] Encode the program name before adding it to the avatar URL
+* [x] Keep the image URL when the user provides one
+* [x] Remove the Community Verification Trends section from Explore
+* [x] Show the 3 verified opportunities with the most votes in Featured Opportunities
+* [x] Remove the hardcoded Featured cards
+
+Concepts Mastered & Key Learnings
+* **encodeURIComponent:** *Learned how to encode spaces and special characters in a URL.*
+* **Mongo aggregation:** *Learned how to use $match, $addFields, $sort and $limit to calculate total votes and get the top 3.*
+* **Dynamic EJS cards:** *Learned how to render the home page cards from the database instead of hardcoded HTML.*
+
+Systematic Bug & Error Tracker
+  * ❌ *Error Message / Behavior:* Opportunities without an image showed the generic placeholder
+  * ⚙️ *Diagnostic Action:* Reviewed the Contribute POST route and the imageUrl field
+  * ✅ *Root Cause & Resolution:* Generated a ui-avatars URL from the encoded title when imageUrl was empty
+
+  * ❌ *Error Message / Behavior:* Featured Opportunities showed the same 3 hardcoded cards
+  * ⚙️ *Diagnostic Action:* Reviewed the home route and the index view
+  * ✅ *Root Cause & Resolution:* Added a service with an aggregation pipeline and rendered the results in a loop
+
+Documentation & Reference Links
+* UI Avatars API - [UI Avatars](https://ui-avatars.com/)
+* MongoDB aggregation pipeline - [Aggregation Pipeline](https://www.mongodb.com/docs/manual/core/aggregation-pipeline/)
+
+Next Horizon Actions
+1. Continue with the user profile and leaderboard sections
