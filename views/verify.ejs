@@ -83,7 +83,9 @@
 
                 <h2>QUEUE OF PENDING CONTRIBUTIONS</h2>
 
+                <%# Pending contributions passed by GET /verify. %>
                 <% const pending = typeof pendingOpportunities !== 'undefined' && pendingOpportunities ? pendingOpportunities : []; %>
+                <%# Render one card per pending opportunity. %>
                 <% pending.forEach(function(o) { %>
                 <div class="card shadow card-margin">
                     <div class="card-body d-flex flex-column">
@@ -129,6 +131,7 @@
                             <!-- right row -->
                             <div class="col-5">
                                 <h3>Verification Veredict</h3>
+                                <%# Both buttons submit the same form with a different vote value. %>
                                 <form action="/opportunity/<%= o._id %>/vote" method="POST">
                                     <button type="submit" name="vote" value="valid" class="btn btn-success btn-vote"><i class="bi bi-check-lg me-2"></i>Vote: Valid <i></i></button>
                                     <button type="submit" name="vote" value="invalid" class="btn btn-danger  btn-vote"><i class="bi bi-x-lg me-2"></i>Vote: Invalid/inaccurate</button>

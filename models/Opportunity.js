@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+// Types of educational opportunities accepted by the schema.
 export const OPPORTUNITY_TYPES = [
   'Scholarships & Financial Aid',
   'Competitions & Contests',
@@ -11,6 +12,7 @@ export const OPPORTUNITY_TYPES = [
   'Courses & Certifications'
 ];
 
+// Subject areas used by the Explore filter.
 export const OPPORTUNITY_AREAS = [
   'Mathematics',
   'Computer Science',
@@ -18,6 +20,7 @@ export const OPPORTUNITY_AREAS = [
   'Engineering'
 ];
 
+// Grade levels used by the Explore filter.
 export const OPPORTUNITY_GRADE_LEVELS = [
   'Middle School',
   'High School',
@@ -27,10 +30,13 @@ export const OPPORTUNITY_GRADE_LEVELS = [
   'Open to all levels'
 ];
 
+// Verification status of an opportunity.
 export const OPPORTUNITY_STATUSES = ['Pending', 'Verified', 'Rejected'];
 
+// MongoDB schema for an opportunity. Mongoose validates these fields on save.
 const OpportunitySchema = new mongoose.Schema(
   {
+    // Basic information shown on the cards and the detail page.
     title: { type: String, required: true, unique: true, trim: true, maxlength: 200 },
     type: { type: String, required: true, enum: OPPORTUNITY_TYPES, trim: true },
     area: { type: [String], enum: OPPORTUNITY_AREAS, default: undefined },
@@ -41,6 +47,7 @@ const OpportunitySchema = new mongoose.Schema(
     location: { type: String, trim: true, maxlength: 200 },
     url: { type: String, trim: true, maxlength: 2000 },
     tags: { type: [String], default: undefined },
+    // Verification data updated by the voting system.
     status: { type: String, enum: OPPORTUNITY_STATUSES },
     trustScore: { type: Number, min: 0, max: 100 },
     validVotes: { type: Number, min: 0 },

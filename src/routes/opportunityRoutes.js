@@ -4,11 +4,15 @@ import { createOpportunity, voteOpportunity } from "../../services/opportunity-s
 
 const router = express.Router();
 
+// Creates an opportunity from the Contribute form.
 router.post('/contribute', parseOpportunity, async (req, res, next) => {
   try {
+    // Whitelist only the fields accepted by the schema.
     const { title, type, area, gradeLevels, imageUrl, description, deadline, location, url, tags, status } = req.body;
+
     // If no image is provided, generate one from the program name.
     const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(title || 'Opportunity')}&background=random&color=fff&size=256`;
+
     const created = await createOpportunity({
       title: title || undefined,
       type: type || undefined,
@@ -29,6 +33,7 @@ router.post('/contribute', parseOpportunity, async (req, res, next) => {
   }
 });
 
+// Receives a valid or invalid vote for an opportunity.
 router.post('/opportunity/:id/vote', async (req, res, next) => {
   try {
     const result = await voteOpportunity(req.params.id, req.body.vote);

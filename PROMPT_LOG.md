@@ -74,3 +74,68 @@
 
 
 **Integration & Learnings**:  It integrates with the database by filtering the opportunities in explore so only the ones that match the checkboxes are shown, and with the schema by reading the enums so the filter values are always valid. We learned how to read the query string and turn it into a Mongo filter.
+
+---
+
+## Week [5] Log Entry
+**Goal:** Implement the search bar in Explore so opportunities can be found by text.
+
+**Prompt**: "Add a search bar to Explore that filters opportunities by title and description, escapes special characters so a search like C++ does not break, and keeps a single GET form with the filters."
+
+**Tool** : Opencode DeepSeek V4.1 Flash
+
+**The Human Audit & Modifications**: AI wanted to search in more fields, so we limited it to title and description. We also asked it to escape regex characters and to keep the search inside the same GET form as the filters, without changing the checkbox markup.
+
+**Integration & Learnings**: It integrates with the existing Explore filters by adding a regex $or condition to the same Mongo filter, so text search and checkboxes work together. We learned how to escape user input before building a regular expression.
+
+---
+
+## Week [5] Log Entry
+**Goal:** Show the pending contributions of the database in the Verify queue and remove the Draft status.
+
+**Prompt**: "Render the pending opportunities in the Verify queue from the database, remove Draft from the model, buttons and CSS, and remove the calendar and check icons from each queue card."
+
+**Tool** : Opencode DeepSeek V4.1 Flash
+
+**The Human Audit & Modifications**: AI started adding extra logic to the view, so we told it to only render the opportunities passed by the route. We removed Draft from the enum and from the views, and we asked to remove the decorative icons without touching the deadline or location icons.
+
+**Integration & Learnings**: It integrates the Verify page with the same opportunity service used by Explore, filtering by status Pending. We learned how to separate the database query from the EJS rendering and how the status field controls which page shows each opportunity.
+
+---
+
+## Week [5] Log Entry
+**Goal:** Load the 50 opportunities from the CSV files into MongoDB and translate their descriptions to English.
+
+**Prompt**: "Import the 50 opportunities from 50_Oportunidades_Educativas.csv, use the image URLs from Imagenes_Programas.csv, and translate every Spanish description to English while keeping the program names as they are."
+
+**Tool** : Opencode DeepSeek V4.1 Flash
+
+**The Human Audit & Modifications**: We told AI not to read the .env file with its tools, to use temporary scripts in the project root, to delete those scripts when finished, and not to commit the CSV files. We reviewed the translated descriptions and kept the Spanish program names unchanged.
+
+**Integration & Learnings**: It integrates with the Opportunity model and fills Explore and Featured with real data. We learned how to transform CSV data into Mongo documents and how to update many documents with a temporary script.
+
+---
+
+## Week [5] Log Entry
+**Goal:** Implement valid/invalid voting with a community trust score and automatic verification or rejection.
+
+**Prompt**: "Make the Vote: Valid and Vote: Invalid buttons work: valid votes increase validVotes, invalid votes increase invalidVotes, the trust score is the percentage of total votes that are valid, and at 100 votes the opportunity is deleted if trust is below 70% or becomes Verified if it is 70% or higher."
+
+**Tool** : Opencode DeepSeek V4.1 Flash
+
+**The Human Audit & Modifications**: AI first redirected to /verify after every vote, so we defined the redirect rules: stay on the detail when the opportunity is not deleted, go to Explore when a Verified opportunity is deleted, and go to Verify when a Pending one is deleted. AI also ignored votes on opportunities that were no longer Pending, but we told it that those votes must count too because their trust can drop and they must be deleted. AI used a helper to rebuild the detail view, and we removed it because the id is enough to return to the detail. Finally, we fixed the NaN error caused by missing vote counters.
+
+**Integration & Learnings**: It integrates with the Opportunity model and the Verify/Explore pages, updating the trust score and status in the database after each vote. We learned how to compute a percentage with Math.round, why both counters must be initialized, and how the previous status decides where to redirect.
+
+---
+
+## Week [5] Log Entry
+**Goal:** Generate a default image for new opportunities, clean the Explore page and show the most voted verified opportunities on the home page.
+
+**Prompt**: "If the opportunity has no image URL, generate one with ui-avatars using the program name; remove the Community Verification Trends section from Explore; and show only the 3 verified opportunities with the most votes in Featured Opportunities."
+
+**Tool** : Opencode DeepSeek V4.1 Flash
+
+**The Human Audit & Modifications**: AI was asked to use the title as the avatar name and to encode it, to keep a provided image URL untouched, and to apply the fallback only when saving. For Featured, we asked for verified opportunities only, ordered by total votes (valid + invalid), limited to 3, and we removed the hardcoded cards.
+
+**Integration & Learnings**: It integrates with the Contribute POST route, the Explore view and the home page. We learned how to build a URL with encodeURIComponent and how to use a Mongo aggregation pipeline to calculate total votes and sort by that calculated field.
