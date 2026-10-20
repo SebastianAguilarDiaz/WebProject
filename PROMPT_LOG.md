@@ -90,7 +90,6 @@
 
 ---
 
-## Week [5] Log Entry
 **Goal:** Show the pending contributions of the database in the Verify queue and remove the Draft status.
 
 **Prompt**: "Render the pending opportunities in the Verify queue from the database, remove Draft from the model, buttons and CSS, and remove the calendar and check icons from each queue card."
@@ -103,20 +102,6 @@
 
 ---
 
-## Week [5] Log Entry
-**Goal:** Load the 50 opportunities from the CSV files into MongoDB and translate their descriptions to English.
-
-**Prompt**: "Import the 50 opportunities from 50_Oportunidades_Educativas.csv, use the image URLs from Imagenes_Programas.csv, and translate every Spanish description to English while keeping the program names as they are."
-
-**Tool** : Opencode DeepSeek V4.1 Flash
-
-**The Human Audit & Modifications**: We told AI not to read the .env file with its tools, to use temporary scripts in the project root, to delete those scripts when finished, and not to commit the CSV files. We reviewed the translated descriptions and kept the Spanish program names unchanged.
-
-**Integration & Learnings**: It integrates with the Opportunity model and fills Explore and Featured with real data. We learned how to transform CSV data into Mongo documents and how to update many documents with a temporary script.
-
----
-
-## Week [5] Log Entry
 **Goal:** Implement valid/invalid voting with a community trust score and automatic verification or rejection.
 
 **Prompt**: "Make the Vote: Valid and Vote: Invalid buttons work: valid votes increase validVotes, invalid votes increase invalidVotes, the trust score is the percentage of total votes that are valid, and at 100 votes the opportunity is deleted if trust is below 70% or becomes Verified if it is 70% or higher."
@@ -129,7 +114,6 @@
 
 ---
 
-## Week [5] Log Entry
 **Goal:** Generate a default image for new opportunities, clean the Explore page and show the most voted verified opportunities on the home page.
 
 **Prompt**: "If the opportunity has no image URL, generate one with ui-avatars using the program name; remove the Community Verification Trends section from Explore; and show only the 3 verified opportunities with the most votes in Featured Opportunities."

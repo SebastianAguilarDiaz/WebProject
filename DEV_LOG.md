@@ -323,7 +323,7 @@ Next Horizon Actions
 Session Overview
 * **Date:** 2026-10-19
 * **Module/Feature Scope:** Explore search bar, dynamic Verify queue, Draft removal and seed data
-* **Est. Time Invested:** 3 hours
+* **Est. Time Invested:** 2 hours
 * **Active Developers:** Sebastian Aguilar
 
 Goals:
@@ -357,7 +357,7 @@ Next Horizon Actions
 Session Overview
 * **Date:** 2026-10-19
 * **Module/Feature Scope:** Voting system, trust score and post-vote redirects
-* **Est. Time Invested:** 3 hours
+* **Est. Time Invested:** 1 hours
 * **Active Developers:** Sebastian Aguilar
 
 Goals:
@@ -385,10 +385,6 @@ Systematic Bug & Error Tracker
   * ⚙️ *Diagnostic Action:* Reviewed the vote route and the status of the voted opportunity
   * ✅ *Root Cause & Resolution:* Returned the status before the vote and redirected to the detail, Explore or Verify depending on whether it was deleted
 
-  * ❌ *Error Message / Behavior:* The 70% boundary was not defined
-  * ⚙️ *Diagnostic Action:* Reviewed the rejection and verification rules
-  * ✅ *Root Cause & Resolution:* Defined that 70% or more verifies and only less than 70% deletes
-
 Documentation & Reference Links
 * Mongoose findByIdAndDelete - [findByIdAndDelete](https://mongoosejs.com/docs/api/model.html#Model.findByIdAndDelete())
 * MDN Math.round - [Math.round](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round)
@@ -402,7 +398,7 @@ Next Horizon Actions
 Session Overview
 * **Date:** 2026-10-19
 * **Module/Feature Scope:** Default avatar, Explore cleanup and dynamic Featured Opportunities
-* **Est. Time Invested:** 2 hours
+* **Est. Time Invested:** 1 hours
 * **Active Developers:** Sebastian Aguilar
 
 Goals:
@@ -416,16 +412,10 @@ Goals:
 Concepts Mastered & Key Learnings
 * **encodeURIComponent:** *Learned how to encode spaces and special characters in a URL.*
 * **Mongo aggregation:** *Learned how to use $match, $addFields, $sort and $limit to calculate total votes and get the top 3.*
-* **Dynamic EJS cards:** *Learned how to render the home page cards from the database instead of hardcoded HTML.*
+
 
 Systematic Bug & Error Tracker
-  * ❌ *Error Message / Behavior:* Opportunities without an image showed the generic placeholder
-  * ⚙️ *Diagnostic Action:* Reviewed the Contribute POST route and the imageUrl field
-  * ✅ *Root Cause & Resolution:* Generated a ui-avatars URL from the encoded title when imageUrl was empty
-
-  * ❌ *Error Message / Behavior:* Featured Opportunities showed the same 3 hardcoded cards
-  * ⚙️ *Diagnostic Action:* Reviewed the home route and the index view
-  * ✅ *Root Cause & Resolution:* Added a service with an aggregation pipeline and rendered the results in a loop
+  There were no errors.
 
 Documentation & Reference Links
 * UI Avatars API - [UI Avatars](https://ui-avatars.com/)
