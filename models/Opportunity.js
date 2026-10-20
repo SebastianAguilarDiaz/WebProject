@@ -27,7 +27,7 @@ export const OPPORTUNITY_GRADE_LEVELS = [
   'Open to all levels'
 ];
 
-export const OPPORTUNITY_STATUSES = ['Draft', 'Pending', 'Verified', 'Rejected'];
+export const OPPORTUNITY_STATUSES = ['Pending', 'Verified', 'Rejected'];
 
 const OpportunitySchema = new mongoose.Schema(
   {

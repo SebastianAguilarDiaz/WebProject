@@ -18,7 +18,7 @@ router.post('/contribute', parseOpportunity, async (req, res, next) => {
       location: location || undefined,
       url: url || undefined,
       tags,
-      status: status || undefined
+      status: status || 'Pending'
     });
     if (!created) return res.status(400).send("Could not create opportunity");
     res.redirect(`/opportunity/${created._id}`);
