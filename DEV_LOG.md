@@ -399,7 +399,7 @@ Session Overview
 * **Date:** 2026-10-19
 * **Module/Feature Scope:** Default avatar, Explore cleanup and dynamic Featured Opportunities
 * **Est. Time Invested:** 1 hours
-* **Active Developers:** Sebastian Aguilar
+* **Active Developers:** Sebastian Aguilar, Mauricio Figueroa
 
 Goals:
 * [x] Generate a ui-avatars image when the opportunity has no image URL
@@ -408,6 +408,7 @@ Goals:
 * [x] Remove the Community Verification Trends section from Explore
 * [x] Show the 3 verified opportunities with the most votes in Featured Opportunities
 * [x] Remove the hardcoded Featured cards
+* [x] Review the code of the previous sessions to understand how it works
 
 Concepts Mastered & Key Learnings
 * **encodeURIComponent:** *Learned how to encode spaces and special characters in a URL.*
@@ -423,3 +424,39 @@ Documentation & Reference Links
 
 Next Horizon Actions
 1. Continue with the user profile and leaderboard sections
+
+---
+### Session 13 Log Entry
+Session Overview
+* **Date:** 2026-10-22
+* **Module/Feature Scope:** Visual improvements on the navbar and the Explore cards
+* **Est. Time Invested:** 1.5 hours
+* **Active Developers:** Mauricio Figueroa
+
+Goals:
+* [x] Make the navbar keep the same height on Home and Explore as on the other pages
+* [x] Make the Explore cards have a standard height
+* [x] Give the card image a fixed size so the layout does not change
+* [x] Keep the opportunity type badge inside the card
+* [x] Increase the space between the card rows
+
+Concepts Mastered & Key Learnings
+* **CSS specificity** *Learned why a global .btn rule only made two navbars taller, and how a more specific selector fixes it.*
+* **object-fit: cover** *Learned how to put an image inside a fixed box and crop it instead of stretching it.*
+* **Line clamp** *Learned how to limit a title or a description to a number of lines with CSS.*
+
+Systematic Bug & Error Tracker
+  * ❌ *Error Message / Behavior:* The navbar was taller on Home and Explore than on the other pages
+  * ⚙️ *Diagnostic Action:* Compared the navbar code of every page and it was the same, so the difference had to come from the CSS files
+  * ✅ *Root Cause & Resolution:* index.css and Explore.css had a global .btn rule that also made the navbar Search button bigger; the rule was moved to the specific buttons so it no longer touches the navbar
+
+  * ❌ *Error Message / Behavior:* The Explore cards had different heights and the type badge went outside the card
+  * ⚙️ *Diagnostic Action:* Checked the classes used on the card and the rules in Explore.css
+  * ✅ *Root Cause & Resolution:* h-70 is not a Bootstrap class and .card-images was not defined in Explore.css, so the image used its natural size; changed it to h-100, gave the image a fixed height with object-fit: cover and made the badge wrap inside the card
+
+Documentation & Reference Links
+* Bootstrap card utilities - [Cards](https://getbootstrap.com/docs/5.3/components/card/)
+* MDN object-fit - [object-fit](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit)
+
+Next Horizon Actions
+1. Continue with the color palette and the shared styles after the authentication part is done

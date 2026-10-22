@@ -123,3 +123,16 @@
 **The Human Audit & Modifications**: AI was asked to use the title as the avatar name and to encode it, to keep a provided image URL untouched, and to apply the fallback only when saving. For Featured, we asked for verified opportunities only, ordered by total votes (valid + invalid), limited to 3, and we removed the hardcoded cards.
 
 **Integration & Learnings**: It integrates with the Contribute POST route, the Explore view and the home page. We learned how to build a URL with encodeURIComponent and how to use a Mongo aggregation pipeline to calculate total votes and sort by that calculated field.
+
+---
+
+## Week [6] Log Entry
+**Goal:** Make the navbar the same height on every page and give the Explore cards a standard size.
+
+**Prompt**: "The navbar on Home and Explore is taller than on the other pages, fix that. Also make the Explore cards keep the same size no matter the image, and keep the type badge inside the card."
+
+**Tool** : Opencode Big Pickle
+
+**The Human Audit & Modifications**: I checked every navbar by hand and confirmed the HTML was the same, so the problem had to be in the CSS. I told it to scope the .btn rule instead of deleting it so the hero buttons keep their size, and to add a rule in navigationBar.css so this does not happen again. For the cards I confirmed that h-70 is not a Bootstrap class and that .card-images was not defined in Explore.css. I also asked for the image height to be 180px and for the space between rows to go from 10px to 20px.
+
+**Integration & Learnings**: It only touches Explore.css, index.css, navigationBar.css and one class in explore.ejs, so it does not conflict with the authentication work. We learned why a global CSS rule can change one page and not the others, and how object-fit: cover keeps an image inside a fixed box.

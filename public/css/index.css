@@ -44,7 +44,11 @@ h1 {
     color: #FFFFFF;
 }
 
-.btn {
+/* Only the hero buttons and the featured card buttons keep the big font size.
+   The navbar Search button must not be affected, or this page gets a taller
+   navbar than the rest of the pages. */
+.principal-info .btn,
+.card .btn {
     font-size: 20px;
 
 }

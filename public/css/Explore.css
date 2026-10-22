@@ -33,15 +33,11 @@ h1 {
     color: #FFFFFF;
     text-align: center;
     margin: auto;
+    font-size: 20px;
 }
 
 .btn-share-an-opportunity {
     color: #FFFFFF;
-}
-
-.btn {
-    font-size: 20px;
-
 }
 
 h2 {
@@ -98,7 +94,7 @@ h3 {
 }
 
 .card-margin {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     padding-bottom: 0px;
 }
 .team-img{
@@ -109,6 +105,40 @@ h3 {
 }
 .team-text{
     padding-left:30px;
+}
+
+/* The card image always keeps the same rectangular box, no matter the image
+   the user provides. 16:9 is wider than tall. object-fit: cover crops the
+   image instead of stretching it. */
+.card-images {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    display: block;
+}
+
+/* The title always reserves 2 lines so every card keeps the same height. */
+.card .card-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: calc(2 * 1.5em);
+}
+
+/* The description always reserves 3 lines for the same reason. */
+.card .card-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: calc(3 * 1.5em);
+}
+
+/* Long opportunity types wrap inside the card instead of going outside it. */
+.card .badge {
+    white-space: normal;
+    max-width: calc(100% - 1rem);
 }
 
 /* .left-column {
