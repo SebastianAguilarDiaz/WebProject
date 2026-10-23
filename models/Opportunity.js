@@ -51,9 +51,14 @@ const OpportunitySchema = new mongoose.Schema(
     status: { type: String, enum: OPPORTUNITY_STATUSES },
     trustScore: { type: Number, min: 0, max: 100 },
     validVotes: { type: Number, min: 0 },
-    invalidVotes: { type: Number, min: 0 }
+    invalidVotes: { type: Number, min: 0 },
+    // User who created the opportunity.
+    createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
   },
   { timestamps: true }
 );
+
+// Speeds up the queries that count opportunities by creator.
+OpportunitySchema.index({ createdBy: 1 });
 
 export const Opportunity = mongoose.model('Opportunity', OpportunitySchema);

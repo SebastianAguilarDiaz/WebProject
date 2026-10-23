@@ -131,10 +131,19 @@
                             <!-- right row -->
                             <div class="col-5">
                                 <h3>Verification Veredict</h3>
-                                <%# Both buttons submit the same form with a different vote value. %>
+                                <% const myVote = (typeof myVotes !== 'undefined' && myVotes) ? myVotes[String(o._id)] : undefined; %>
                                 <form action="/opportunity/<%= o._id %>/vote" method="POST">
-                                    <button type="submit" name="vote" value="valid" class="btn btn-success btn-vote"><i class="bi bi-check-lg me-2"></i>Vote: Valid <i></i></button>
-                                    <button type="submit" name="vote" value="invalid" class="btn btn-danger  btn-vote"><i class="bi bi-x-lg me-2"></i>Vote: Invalid/inaccurate</button>
+                                    <input type="hidden" name="returnTo" value="/verify">
+                                    <% if (myVote === 'valid') { %>
+                                        <button type="button" disabled class="btn btn-success btn-vote is-selected"><i class="bi bi-check-lg me-2"></i>Vote: Valid</button>
+                                    <% } else { %>
+                                        <button type="submit" name="vote" value="valid" class="btn btn-success btn-vote"><i class="bi bi-check-lg me-2"></i>Vote: Valid</button>
+                                    <% } %>
+                                    <% if (myVote === 'invalid') { %>
+                                        <button type="button" disabled class="btn btn-danger btn-vote is-selected"><i class="bi bi-x-lg me-2"></i>Vote: Invalid/inaccurate</button>
+                                    <% } else { %>
+                                        <button type="submit" name="vote" value="invalid" class="btn btn-danger btn-vote"><i class="bi bi-x-lg me-2"></i>Vote: Invalid/inaccurate</button>
+                                    <% } %>
                                 </form>
                             </div>
 
@@ -160,7 +169,7 @@
 
                         <div class="card shadow card-margin card-h-margin">
                             <div class="card-body d-flex flex-column">
-                                <p class="card-text">CONTRIBUTIONS YOU'VE VERIFIED (VALID): [25]</p>
+                                <p class="card-text">CONTRIBUTIONS YOU'VE VERIFIED (VALID): [<%= stats ? stats.validVotes : 0 %>]</p>
                                 
                             </div>
                         </div>
@@ -170,7 +179,7 @@
 
                         <div class="card shadow card-margin card-h-margin">
                             <div class="card-body d-flex flex-column">
-                                <p class="card-text">CONTRIBUTIONS YOU'VE FLAGGED (INVALID): [5]</p>
+                                <p class="card-text">CONTRIBUTIONS YOU'VE FLAGGED (INVALID): [<%= stats ? stats.invalidVotes : 0 %>]</p>
                                 
                             </div>
                         </div>
@@ -179,7 +188,7 @@
                 </div>
                 <div class="card shadow card-margin card-h-margin">
                     <div class="card-body d-flex flex-column">
-                        <p class="card-text">YOUR VERIFIER RANK: 4</p>
+                        <p class="card-text">YOUR VERIFIER RANK: <%= stats ? stats.rank : 1 %></p>
 
                         <div class="row">
                             <div class="col-3">

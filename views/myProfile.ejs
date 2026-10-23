@@ -86,12 +86,14 @@
                         <div class="row">
                             <img class="mx-auto my-2 pfp-img" src="/images/pfp.png" alt="Profile picture">
 
-                            <h3 class="my-1">alejandro.rtz88</h3>
-                            <p class="mb-1">alejandro.rtz88@gmail.com</p>
-                            <p class="mb-3">Guadalajara</p>
+                            <h3 class="my-1"><%= user.name %></h3>
+                            <p class="mb-3"><%= user.email %></p>
 
                             <div class="col-12">
                                 <button class="btn btn-primary mt-auto w-100">Change info</button>
+                                <form action="/logout" method="POST" class="mt-2">
+                                    <button type="submit" class="btn btn-outline-danger w-100">Log Out</button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -110,14 +112,14 @@
                     <div class="col-6">
                         <div class="card shadow-sm">
                             <div class="card-body">
-                                <p class="card-text">OPPORTUNITIES SHARED: [4]</p>
+                                <p class="card-text">OPPORTUNITIES SHARED: [<%= stats.shared %>]</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="card shadow-sm">
                             <div class="card-body">
-                                <p class="card-text">OPPORTUNITIES VERIFIED: [8]</p>
+                                <p class="card-text">OPPORTUNITIES VERIFIED: [<%= stats.verified %>]</p>
                             </div>
                         </div>
                     </div>
@@ -125,12 +127,12 @@
 
                 <div class="card shadow my-3">
                     <div class="card-body d-flex flex-column">
-                        <p class="card-text">OPPORTUNITIES VERIFIED: [8]</p>
+                        <p class="card-text">OPPORTUNITIES VERIFIED: [<%= stats.verified %>]</p>
                         <p class="card-text">COMMUNITY TRUST SCORE:</p>
                         <div class="progress" >
-                            <div class="progress-bar bg-success" style="width: 80%">80%</div>
+                            <div class="progress-bar bg-success" style="width: <%= stats.trustScore %>%"><%= stats.trustScore %>%</div>
                         </div> 
-                        <p class="card-text mt-3">VERIFIER RANK: [Level 4]</p>
+                        <p class="card-text mt-3">VERIFIER RANK: [Level <%= stats.rank %>]</p>
                     </div>
                 </div>
                 

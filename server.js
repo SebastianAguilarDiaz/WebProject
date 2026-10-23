@@ -1,22 +1,31 @@
 import express from "express";
-import bodyParser from "body-parser";
+import session from "express-session";
 import principalRoutes from "./src/routes/principalRoutes.js";
 import opportunityRoutes from "./src/routes/opportunityRoutes.js";
+import authRoutes from "./src/routes/authRoutes.js";
 import { loadEnvFile } from "node:process";
-import {connectDB} from "./config/db.js";
+import { connectDB } from "./config/db.js";
 
 const app = express();
-const PORT=3000;
+const PORT = 3000;
 
-// Parse URL-encoded bodies sent by the Contribute and Vote forms.
-app.use(bodyParser.urlencoded({ extended: true }));
+// Load the environment variables before anything reads them.
+loadEnvFile();
+
+// Parse URL-encoded bodies sent by the forms.
+app.use(express.urlencoded({ extended: true }));
+
+// Keep the user logged in with a session cookie.
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false,
+  cookie: { httpOnly: true, maxAge: 1000 * 60 * 60 * 24 }
+}));
 
 // Use EJS and keep the views in their own folder, outside the routes.
 app.set("view engine", "ejs");
 app.set("views", "./views");
-
-// Load the database credentials from the .env file.
-loadEnvFile();
 
 const dbuser = process.env.DB_USER;
 const dbpassword = process.env.DB_PASSWORD;
@@ -32,6 +41,9 @@ connectDB(mongoUrl);
 app.use("/css", express.static("./public/css"));
 app.use("/js", express.static("./public/js"));
 app.use("/images", express.static("./public/images"));
+
+// Login, registration and logout actions.
+app.use("/", authRoutes);
 
 // Page routes and form/action routes.
 app.use("/", principalRoutes);

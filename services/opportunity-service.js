@@ -1,12 +1,27 @@
-import {Opportunity} from "../models/Opportunity.js";
+import { Opportunity } from "../models/Opportunity.js";
+import { User } from "../models/User.js";
 
 // Creates a new opportunity and returns it. On a database error it logs the
 // message and returns undefined.
 export const createOpportunity = async (data) => {
-  const opportunity = await Opportunity.create(data)
-    .catch((dbError) => {
-      console.error(dbError.message);
-    });
+  // The author comes from the session and the status is always pending.
+  const opportunity = await Opportunity.create({
+    ...data,
+    status: 'Pending'
+  }).catch((dbError) => {
+    console.error(dbError.message);
+  });
+
+  if (!opportunity) return undefined;
+
+  // Keep the denormalized list on the user in sync with the new opportunity.
+  if (opportunity.createdBy) {
+    await User.updateOne(
+      { _id: opportunity.createdBy },
+      { $addToSet: { createdOpportunities: opportunity._id } }
+    ).catch((dbError) => console.error(dbError.message));
+  }
+
   return opportunity;
 };
 
@@ -15,41 +30,6 @@ export const findOpportunity = async (id) => {
   const opportunityFound = await Opportunity.findById(id)
     .catch((dbError) => console.error(dbError.message));
   return opportunityFound;
-};
-
-// Adds one valid or invalid vote, recalculates the trust score, and applies
-// the 100-vote rule: below 70% is deleted, 70% or more becomes Verified.
-// Returns the status before the vote so the route can decide where to redirect.
-export const voteOpportunity = async (id, vote) => {
-  const opportunity = await Opportunity.findById(id)
-    .catch((dbError) => console.error(dbError.message));
-  if (!opportunity) return null;
-
-  // Ignore any value that is not a valid or invalid vote.
-  if (vote !== 'valid' && vote !== 'invalid') return null;
-
-  // Keep the original status for the redirect decision.
-  const statusBefore = opportunity.status;
-
-  // Old documents may not have the counters, so default them to 0.
-  opportunity.validVotes = (opportunity.validVotes || 0) + (vote === 'valid' ? 1 : 0);
-  opportunity.invalidVotes = (opportunity.invalidVotes || 0) + (vote === 'invalid' ? 1 : 0);
-
-  // Trust score = percentage of all votes that are valid.
-  const totalVotes = opportunity.validVotes + opportunity.invalidVotes;
-  opportunity.trustScore = Math.round((opportunity.validVotes / totalVotes) * 100);
-
-  // After 100 votes the community has resolved the opportunity.
-  if (totalVotes >= 100) {
-    if (opportunity.trustScore < 70) {
-      await Opportunity.findByIdAndDelete(id);
-      return { deleted: true, status: statusBefore };
-    }
-    opportunity.status = 'Verified';
-  }
-
-  await opportunity.save();
-  return { deleted: false, status: statusBefore };
 };
 
 // Returns every opportunity that matches the filter, sorted by deadline.
