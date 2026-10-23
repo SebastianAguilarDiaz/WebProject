@@ -123,3 +123,40 @@
 **The Human Audit & Modifications**: AI was asked to use the title as the avatar name and to encode it, to keep a provided image URL untouched, and to apply the fallback only when saving. For Featured, we asked for verified opportunities only, ordered by total votes (valid + invalid), limited to 3, and we removed the hardcoded cards.
 
 **Integration & Learnings**: It integrates with the Contribute POST route, the Explore view and the home page. We learned how to build a URL with encodeURIComponent and how to use a Mongo aggregation pipeline to calculate total votes and sort by that calculated field.
+
+---
+
+## Week [6] Log Entry
+**Goal:** Add user accounts with server-side sessions and protect the pages that need a logged-in user.
+
+**Prompt**: "Implement register, login and logout with express-session (no JWT), hash the passwords with bcryptjs, add a requireLogin middleware that redirects to /login?redirect=..., and protect /contribute, the vote action and /myProfile."
+
+**Tool** : Opencode Big Pickle
+
+**The Human Audit & Modifications**: The session had to stay on the server, so we rejected JWT, localStorage and client-side checks. We asked for a safe redirect that only accepts internal paths, for the password hash to never reach the view, and for the handlers to tolerate a missing body.
+
+**Integration & Learnings**: The session middleware lives in server.js, the auth routes render the login and register views, and requireLogin protects the pages and actions. We learned how the session cookie keeps the user id on the server and why the hash is never rendered.
+
+---
+
+**Goal:** Let each user vote once per opportunity and apply the 100-vote community rule.
+
+**Prompt**: "Create a Vote model with a unique user and opportunity index, let the user change their vote, recalculate the trust score, and at 100 votes mark the opportunity Verified at 70% or more, or delete it below 70% with a cascade cleanup."
+
+**Tool** : Opencode Big Pickle
+
+**The Human Audit & Modifications**: We defined that the creator can vote their own opportunity, that votes on Verified opportunities still count, and that the vote can change without duplicating the document. We also asked to return to the page that sent the form with returnTo and to render the emitted vote as active and disabled.
+
+**Integration & Learnings**: The vote service updates the Vote document, the counters and the trust score; the detail and Verify views render the selected button. We learned how the unique compound index prevents duplicates and how the previous status decides the redirect after a deletion.
+
+---
+
+**Goal:** Show real statistics on MyProfile and Verify and finish the project cleanup.
+
+**Prompt**: "Show the real shared and verified counts, the average trust score and the verifier rank on MyProfile, show the valid and invalid counts on Verify, clean the database and remove the empty public/js/index.js."
+
+**Tool** : Opencode Big Pickle
+
+**The Human Audit & Modifications**: We asked for the trust average to include only opportunities that already have votes, for the rank formula to be `min(5, 1 + floor(votesCast / 10))`, and for anonymous visitors to see zeros. We kept the legacy opportunities even though they have no creator, and we removed the empty JavaScript file because no page uses it.
+
+**Integration & Learnings**: The user service calculates the statistics with counts and an aggregation; the profile and Verify views render them from the server. We learned how to run several queries in parallel and how to verify the database state after the cleanup.

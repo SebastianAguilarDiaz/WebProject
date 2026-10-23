@@ -423,3 +423,53 @@ Documentation & Reference Links
 
 Next Horizon Actions
 1. Continue with the user profile and leaderboard sections
+
+---
+
+### Session 13 Log Entry
+Session Overview
+* **Date:** 2026-10-22
+* **Module/Feature Scope:** User accounts, server-side sessions, voting, profile statistics and database cleanup
+* **Est. Time Invested:** 8 hours
+* **Active Developers:** Grace Valencia
+
+Goals:
+* [x] Add server-side sessions with `express-session` and a `requireLogin` middleware
+* [x] Create the `User` and `Vote` models and link each opportunity to its creator
+* [x] Implement register, login and logout with hashed passwords and internal redirects
+* [x] Protect Contribute and voting; force the `Pending` status and generate the default avatar
+* [x] Register one changeable vote per user and recalculate the trust score
+* [x] Apply the 100-vote rule: `Verified` at 70% or more, delete below 70% with cascade cleanup
+* [x] Show the emitted vote as active and disabled on the detail and Verify pages
+* [x] Show real statistics on MyProfile and Verify
+* [x] Clean the database, remove the empty `public/js/index.js` and run the full regression
+
+Concepts Mastered & Key Learnings
+* **Server-side sessions:** *Learned how `express-session` keeps the user id in an httpOnly cookie and how a middleware protects routes.*
+* **Password hashing:** *Learned how to hash and compare passwords with `bcryptjs`, and why the hash is never sent to the view.*
+* **Unique compound indexes:** *Learned how `{ user, opportunity }` prevents duplicate votes while still allowing the vote to change.*
+* **Statistics with `Promise.all`:** *Learned how to run several counts and aggregations in parallel for the profile.*
+* **Server-side button state:** *Learned how to render the active vote with EJS instead of changing classes with client JavaScript.*
+
+Systematic Bug & Error Tracker
+  * ❌ *Error Message / Behavior:* Atlas rejected some connections with `SSL alert number 80` during the tests
+  * ⚙️ *Diagnostic Action:* Repeated the connection and confirmed the failure was intermittent, not a credentials problem
+  * ✅ *Root Cause & Resolution:* Added a retry loop to the temporary verification scripts
+
+  * ❌ *Error Message / Behavior:* `POST /register` without a form body returned a 500 error
+  * ⚙️ *Diagnostic Action:* Checked the handler and saw that `req.body` was `undefined`
+  * ✅ *Root Cause & Resolution:* Guarded the body with `const { ... } = req.body || {}` in the auth and vote routes
+
+  * ❌ *Error Message / Behavior:* The first voting test reported wrong counters
+  * ⚙️ *Diagnostic Action:* Compared the expected values with the vote rules
+  * ✅ *Root Cause & Resolution:* Corrected the test assertions: a repeated vote keeps the counters and `votesCast`
+
+Documentation & Reference Links
+* Express session - [express-session](https://www.npmjs.com/package/express-session)
+* bcryptjs - [bcryptjs](https://www.npmjs.com/package/bcryptjs)
+* Mongoose unique indexes - [Unique Indexes](https://mongoosejs.com/docs/faq.html#unique)
+
+Next Horizon Actions
+1. Implement the dynamic verifier leaderboard
+2. Make Saved Opportunities and Recent Activity dynamic
+3. Add profile editing and persistent sessions with `connect-mongo`

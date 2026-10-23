@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/navigationBar.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>Scholar Find - Log In</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-color">
+        <div class="container">
+
+            <a class="navbar-brand" href="/">
+                Scholar Find
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sdgNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="sdgNav">
+                <form class="d-flex search-bar" role="search" action="/explore" method="GET">
+                    <input class="form-control me-2" id="search-bar" name="q" type="search" placeholder="Search" value="">
+
+                    <button class="btn btn-success" type="submit">
+                        Search
+                    </button>
+                </form>
+
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/explore">Explore</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contribute">Contribute</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/verify">Verify</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/myProfile">My Profile</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6 col-lg-5">
+                <div class="card shadow">
+                    <div class="card-body p-4">
+                        <h1 class="h3 mb-4 text-center">Log In</h1>
+
+                        <% if (error) { %>
+                            <div class="alert alert-danger" role="alert"><%= error %></div>
+                        <% } %>
+
+                        <form action="/login" method="POST">
+                            <% if (redirect) { %>
+                                <input type="hidden" name="redirect" value="<%= redirect %>">
+                            <% } %>
+
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" required
+                                    value="<%= values.email || '' %>">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password" name="password" required>
+                            </div>
+
+                            <button type="submit" class="btn btn-success w-100">Log In</button>
+                        </form>
+
+                        <p class="text-center mt-3 mb-0">
+                            Don't have an account? <a href="/register">Create one</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
