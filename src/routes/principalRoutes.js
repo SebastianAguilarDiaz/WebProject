@@ -23,6 +23,11 @@ router.get('/',async (req,res,next)=>{
   res.render("about");
 })
 
+// JWT test login page (parallel to session auth)
+.get('/login-jwt',(req,res,next)=>{
+  res.render("login-jwt");
+})
+
 // Contribute form: requires an active session.
 .get('/contribute',requireLogin,(req,res,next)=>{
   res.render("contribute");

@@ -1,6 +1,6 @@
 # ScholarFind — Especificación técnica: autenticación, usuarios y votos por usuario
 
-**Estado:** Fase 1 en implementación
+**Estado:** Fase 1 completada
 **Última actualización:** 2026-10-22
 **Stack:** Node.js + Express 5 + EJS + MongoDB/Mongoose + express-session
 **Alcance:** cuentas de usuario, sesiones, contribuciones autenticadas, votos por usuario y estadísticas dinámicas.

@@ -3,6 +3,7 @@ import session from "express-session";
 import principalRoutes from "./src/routes/principalRoutes.js";
 import opportunityRoutes from "./src/routes/opportunityRoutes.js";
 import authRoutes from "./src/routes/authRoutes.js";
+import authJwtRoutes from "./src/routes/authJwtRoutes.js";
 import { loadEnvFile } from "node:process";
 import { connectDB } from "./config/db.js";
 
@@ -14,6 +15,8 @@ loadEnvFile();
 
 // Parse URL-encoded bodies sent by the forms.
 app.use(express.urlencoded({ extended: true }));
+// Parse JSON bodies for the JWT API
+app.use(express.json());
 
 // Keep the user logged in with a session cookie.
 app.use(session({
@@ -44,6 +47,9 @@ app.use("/images", express.static("./public/images"));
 
 // Login, registration and logout actions.
 app.use("/", authRoutes);
+
+// JWT API (parallel to session auth)
+app.use("/api/auth-jwt", authJwtRoutes);
 
 // Page routes and form/action routes.
 app.use("/", principalRoutes);
