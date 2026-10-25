@@ -1,5 +1,5 @@
 # Team Developer Log
- 
+
 **Project Name:** ScholarFind  
 **Team Members:** Sebastian Luis Enrique Aguilar Díaz, Mauricio Figueroa Gaspar, Grace Alejandra Valencia Villanueva  
 **Active Repository Path:** https://github.com/SebastianAguilarDiaz/WebProject  
@@ -36,12 +36,12 @@ Documentation & Reference Links
 
 Next Horizon Actions
 1. Continue with another HTML file from another subpage of the project
- 
+
 ---
 
 ### Session 2 Log Entry
 Session Overview
- 
+
 * **Date:** 2026-09-07
 * **Module/Feature Scope:** About Us Page
 * **Est. Time Invested:** 2 hours
@@ -75,17 +75,17 @@ Documentation & Reference Links
 
 Next Horizon Actions
 1. Continue with the verification page.
- 
+
 ---
 
 ### Session 3 Log Entry
- 
+
 Session Overview
 * **Date:** 2026-09-08
 * **Module/Feature Scope:** Verification Page & Explore Page (Title, Search Bar & Filters)
 * **Est. Time Invested:** 7.5 hours total (2h Sebastian, 2h Mauricio, 3.5h Grace)
 * **Active Developers:** Sebastian Aguilar, Mauricio Figueroa, Grace Valencia
- 
+
 Goals:
 * [x] Create the cards for contribution verified and flagged
 * [x] Create the card for verifier rank
@@ -117,7 +117,7 @@ Systematic Bug & Error Tracker
 
 Documentation & Reference Links
 * Bootstrap documentation - [Bootstrap](https://getbootstrap.com/)
- 
+
 Next Horizon Actions
 1. Resolve responsive interface layout for mobile devices on Explore Page
 2. Continue with another HTML file from another subpage of the project
@@ -125,13 +125,13 @@ Next Horizon Actions
 ---
 
 ### Session 4 Log Entry
- 
+
 Session Overview
 * **Date:** 2026-09-09
 * **Module/Feature Scope:** Contribute and Explore pages & Branch Merging Integration
 * **Est. Time Invested:** 18 hours total (5h Sebastian, 7h Mauricio, 6h Grace)
 * **Active Developers:** Sebastian Aguilar, Mauricio Figueroa, Grace Valencia
- 
+
 Goals:
 * [x] Create the cards for contribution verified and flagged
 * [x] Create the card for verifier rank
@@ -159,32 +159,29 @@ Documentation & Reference Links
 * Bootstrap documentation - [Bootstrap](https://getbootstrap.com/)
 * Bootstrap documentation - [Bootstrap](https://getbootstrap.com/)
 * Git documentation on merging - [Git Merge Conflicts](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
- 
+
 Next Horizon Actions
 1. Continue with another HTML file from another subpage of the project
 
 ---
 ### Session 5 Log Entry
- 
 Session Overview
 * **Date:** 2026-10-13
 * **Module/Feature Scope:** Project restructuration
 * **Est. Time Invested:** 2 hours
 * **Active Developers:** Sebastian Aguilar
- 
+
 Goals:
 * [x] Create de folder structure so we can continue working with the server part of the project
 
-
 Concepts Mastered & Key Learnings
 * **Express basic folder structure** *Learned how to make the basic structure for an express project*
-
 
 Systematic Bug & Error Tracker 
   * ❌ *Error Message / Behavior:* Because of the simplicity of the activity there were no errors
   * ⚙️ *Diagnostic Action:* 
   * ✅ *Root Cause & Resolution:*
- 
+
 Next Horizon Actions
 1. Start with the server implementation
 
@@ -202,16 +199,14 @@ Goals:
 Concepts Mastered & Key Learnings
 * **Express endpoints** *Mastered the express endpoints creation*
 
-
 Systematic Bug & Error Tracker 
   * ❌ *Error Message / Behavior:* The weren't styles in the page provided by the server.js file
   * ⚙️ *Diagnostic Action:*  The server wasn't reading the css files
   * ✅ *Root Cause & Resolution:*  It was missing a middleware to manage those files
 
-
 Documentation & Reference Links
 * Express documentation - [Express](https://expressjs.com/en/5x/starter/static-files/)
- 
+
 Next Horizon Actions
 1. Continue with more complex endpoints
 
@@ -231,22 +226,16 @@ Goals:
 * [x] Create opportunity services
 * [x] Connect with the DB
 
-
-
-
 Concepts Mastered & Key Learnings
 * **Express endpoints** *Mastered the express endpoints creation*
 * **Ejs files** *How to render an ejs file*
 * **Mongoose schema** *How to create a mongoose schema*
-
 
 Systematic Bug & Error Tracker 
   * ❌ *Error Message / Behavior:* There weren't errors
   * ⚙️ *Diagnostic Action:*  
   * ✅ *Root Cause & Resolution:*  
 
-
- 
 Next Horizon Actions
 1. Continue with the next endpoints and mongoDB 
 
@@ -270,14 +259,11 @@ Concepts Mastered & Key Learnings
 * **Express middleware** *Learned how a middleware parses the form data before it reaches the database*
 * **Ejs loops** *Learned how to render the explore cards from the database*
 
-
 Systematic Bug & Error Tracker 
   * ❌ *Error Message / Behavior:* The type selected in contribute didn't show in the detail page
   * ⚙️ *Diagnostic Action:* Checked the detail route and it wasn't reading from the database, only passing the id
   * ✅ *Root Cause & Resolution:* Changed the route so it reads the opportunity with findOpportunity and passes all the fields to the view
 
-
- 
 Next Horizon Actions
 1. Implement the search and filters in explore
 
@@ -318,7 +304,6 @@ Next Horizon Actions
 1. Implement the search bar in explore 
 
 ---
-
 ### Session 10 Log Entry
 Session Overview
 * **Date:** 2026-10-19
@@ -345,14 +330,13 @@ Systematic Bug & Error Tracker
   * ✅ *Root Cause & Resolution:* Escaped the special regex characters before creating the RegExp
 
 Documentation & Reference Links
-* MongoDB $or operator - [$or](https://www.mongodb.com/docs/manual/reference/operator/query/or/)
+* MongoDB $or operator - [$or](https://www.mongodb.com/docs/manual/reference/operator/query/in/)
 * MDN Regular expressions - [RegExp](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions)
 
 Next Horizon Actions
 1. Implement the voting system and the trust score
 
 ---
-
 ### Session 11 Log Entry
 Session Overview
 * **Date:** 2026-10-19
@@ -387,13 +371,12 @@ Systematic Bug & Error Tracker
 
 Documentation & Reference Links
 * Mongoose findByIdAndDelete - [findByIdAndDelete](https://mongoosejs.com/docs/api/model.html#Model.findByIdAndDelete())
-* MDN Math.round - [Math.round](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round)
+* MDN Math.round - [Math.round](https://www.mongodb.com/docs/manual/reference/operator/query/in/)
 
 Next Horizon Actions
 1. Improve the images and the home page with dynamic data
 
 ---
-
 ### Session 12 Log Entry
 Session Overview
 * **Date:** 2026-10-19
@@ -413,7 +396,6 @@ Concepts Mastered & Key Learnings
 * **encodeURIComponent:** *Learned how to encode spaces and special characters in a URL.*
 * **Mongo aggregation:** *Learned how to use $match, $addFields, $sort and $limit to calculate total votes and get the top 3.*
 
-
 Systematic Bug & Error Tracker
   There were no errors.
 
@@ -425,7 +407,6 @@ Next Horizon Actions
 1. Continue with the user profile and leaderboard sections
 
 ---
-
 ### Session 13 Log Entry
 Session Overview
 * **Date:** 2026-10-22
@@ -457,7 +438,7 @@ Systematic Bug & Error Tracker
   * ✅ *Root Cause & Resolution:* Added a retry loop to the temporary verification scripts
 
   * ❌ *Error Message / Behavior:* `POST /register` without a form body returned a 500 error
-  * ⚙️ *Diagnostic Action:* Checked the handler and saw that `req.body` was `undefined`
+  * ⚙️ *Diagnostic Action:* Traced the auth routes and saw that `req.body` was `undefined` when no form data was sent
   * ✅ *Root Cause & Resolution:* Guarded the body with `const { ... } = req.body || {}` in the auth and vote routes
 
   * ❌ *Error Message / Behavior:* The first voting test reported wrong counters
@@ -473,3 +454,31 @@ Next Horizon Actions
 1. Implement the dynamic verifier leaderboard
 2. Make Saved Opportunities and Recent Activity dynamic
 3. Add profile editing and persistent sessions with `connect-mongo`
+
+---
+### Session 14 Log Entry
+Session Overview
+
+* **Date:** 2026-10-24
+* **Module/Feature Scope:** Dynamic My Profile feed and Verify page styling
+* **Est. Time Invested:** 3 hours
+* **Active Developers:** Mauricio Figueroa
+
+Goals:
+* [x] Replace static lapped cards in My Profile with a dynamic list of opportunities created by the user
+* [x] Rename "RECENT ACTIVITY FEED" to "MY SHARED OPPORTUNITIES"
+* [x] Fix badge image sizing on My Profile page to match Verify page
+* [x] Implement the "NEXT RANK PROGRESS" visual bar on My Profile page
+* [x] Ensure the Verify page correctly displays user-specific stats only when logged in
+
+Concepts Mastered & Key Learnings
+* **CSS Porting:** *Learned how to replicate specific visual styles (like the rank squares) between different CSS files to ensure a consistent UI.*
+* **Dynamic View Logic:** *Practiced using EJS loops to render user-specific database content in a profile feed.*
+
+Systematic Bug & Error Tracker
+  * ❌ *Error Message / Behavior:* The Rank Progress bar was invisible on the profile page
+  * ⚙️ *Diagnostic Action:* Checked the CSS and found the classes were missing from myProfile.css
+  * ✅ *Root Cause & Resolution:* Copied the styles from verify.css to fix the visibility
+
+Next Horizon Actions
+1. Final project review and cleanup

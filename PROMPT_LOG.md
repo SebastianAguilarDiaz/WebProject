@@ -163,6 +163,8 @@
 
 ---
 
+---
+
 ## Week [7] Log Entry
 **Goal:** Add JWT + localStorage authentication in parallel to the existing session-based system without breaking anything.
 
@@ -173,3 +175,15 @@
 **The Human Audit & Modifications**: Corrected the approach multiple times when it suggested replacing the session auth with JWT. Insisted on keeping all existing routes, middleware and views untouched. Rejected ideas that involved modifying the current login, register or profile files. Made sure only new files were created for the JWT side, and that changes to server.js, package.json, .env and principalRoutes.js were strictly minimal. Asked for verification at every step, checked that /api/auth-jwt/me never returned passwordHash, and made sure the token was correctly saved to localStorage under scholarfind_jwt_token. Also tested that the old session flow remained intact after the changes.
 
 **Integration & Learnings**: Learned the difference between "adding" and "replacing" functionality. Understood how two auth systems can coexist without mixing them by using separate routes, middleware and files. Practiced asking for verification and corrections instead of blindly asking to implement everything, and learned to be strict about keeping working code untouched.
+
+---
+
+**Goal:** Display user verification statistics on the Verify page only when the user is logged in.
+
+**Prompt**: "Modify the Verify route and view so that the verification impact stats and the verifier rank only render if the user is authenticated. If the user is not logged in, these sections should be hidden or show zeros, and the route should not crash when req.session.userId is missing."
+
+**Tool** : Opencode Big Pickle
+
+**The Human Audit & Modifications**: AI initially tried to wrap the entire page in a login check, so we told it to only target the specific statistics cards. We also adjusted the fallback logic to ensure the page still loads the pending opportunities queue for anonymous visitors while keeping the personal stats hidden.
+
+**Integration & Learnings**: It integrates the user service stats with the Verify view using a conditional check on the session. We learned how to handle optional user data in EJS and how to provide a seamless experience for both guest and authenticated users on the same page.

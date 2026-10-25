@@ -14,3 +14,16 @@ I evaluate my personal contribution very positively regarding layout responsiven
 
 ### 3. Peer Reflection & Team Collaboration
 Regarding peer contributions, Sebastian was the most responsible and hard-working member of the team, carrying the largest workload and delivering solid, functional code that served as a core foundation for the project. On the other hand, Grace, despite starting her development tasks later in the timeline, delivered an exceptionally well-formatted and visually polished contribution on the Explore page, making her input highly valuable to the final outcome.
+
+---
+
+## Second Midterm Log
+
+### 1. Personal Experience & Technical Contributions
+In this part of the project, I focused on making sure the user information was displayed correctly on the Verify and My Profile pages. This was much more difficult than the first midterm. I also found it a bit tedious and awkward that we created too many different branches, which made the process more confusing.
+
+### 2. Personal Self-Assessment
+I feel that my time management was poor during this stage and my commitment to my teammates declined. I know I could have done a better job, but I believe that the final result of my work turned out well.
+
+### 3. Peer Reflection & Team Collaboration
+Communication was a very important factor in this assignment. Because the project became more difficult, we had to talk more than we did in the last one. Once again, Sebastian did a large part of the project work.
