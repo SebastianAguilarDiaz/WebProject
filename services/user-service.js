@@ -59,14 +59,25 @@ export const getUserStats = async (userId) => {
     : 0;
 
   const votesCast = user ? user.votesCast || 0 : 0;
+  const currentRank = Math.min(5, 1 + Math.floor(votesCast / 10));
+
+  let squaresFilled = 0;
+  if (currentRank >= 5) {
+    squaresFilled = 5;
+  } else {
+    const votesInCurrentLevel = votesCast % 10;
+    squaresFilled = Math.min(5, Math.round((votesInCurrentLevel / 10) * 5));
+  }
 
   return {
     shared,
     verified,
     trustScore,
     votesCast,
-    rank: Math.min(5, 1 + Math.floor(votesCast / 10)),
+    rank: currentRank,
+    currentRank,
     validVotes,
-    invalidVotes
+    invalidVotes,
+    squaresFilled
   };
 };
