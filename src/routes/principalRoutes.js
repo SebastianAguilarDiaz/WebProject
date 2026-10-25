@@ -51,11 +51,12 @@ router.get('/',async (req,res,next)=>{
 })
 
 // User profile: requires an active session and shows the real statistics.
-.get('/myProfile',requireLogin,async (req,res,next)=>{
+router.get('/myProfile',requireLogin,async (req,res,next)=>{
   try {
-    const [user, stats] = await Promise.all([
+    const [user, stats, sharedOpportunities] = await Promise.all([
       getUserById(req.session.userId),
-      getUserStats(req.session.userId)
+      getUserStats(req.session.userId),
+      (await findOpportunities({ createdBy: req.session.userId })) || []
     ]);
 
     // The session points to a user that no longer exists.
@@ -63,11 +64,12 @@ router.get('/',async (req,res,next)=>{
       return req.session.destroy(() => res.redirect("/login"));
     }
 
-    res.render("myProfile", { user, stats });
+    res.render("myProfile", { user, stats, sharedOpportunities });
   } catch (err) {
     next(err);
   }
 })
+
 
 // Verify: shows the queue of pending contributions.
 router.get('/verify',async (req,res,next)=>{

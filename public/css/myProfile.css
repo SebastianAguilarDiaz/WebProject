@@ -4,7 +4,7 @@ body {
 
 
 .title-container {
-    background-color: #FE7F2D;
+    background-color: #FE7D2D;
     display: flex;
     justify-content: center;
     width: fit-content;
@@ -25,8 +25,6 @@ h2 {
     font-family: sans-serif;
     color: #1b2f3b;
     font-weight: bold;
-
-
 }
 
 hr {
@@ -34,7 +32,6 @@ hr {
     border-top: 2px solid darkslategrey;
     margin-right: 30px;
     margin-left: 30px;
-
 }
 
 .contact-info {
@@ -56,4 +53,40 @@ h3 {
 .activity-img {
     max-width: 50%;
     height: auto;
+}
+
+.badges-img {
+    width: 80px;
+    height: 80px;
+}
+
+.green-squares {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.375rem 0.75rem;
+  margin: 2px 3px;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #fff;
+  background-color: #198754;
+  border: 1px solid #198754;
+  border-radius: 0.375rem;
+  user-select: none;
+}
+
+.green-squares-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.375rem 0.75rem;
+  margin: 2px 3px;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #fff;
+  border: 1px solid #198754;
+  border-radius: 0.375rem;
+  user-select: none;
 }

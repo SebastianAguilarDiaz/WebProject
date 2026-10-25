@@ -160,3 +160,16 @@
 **The Human Audit & Modifications**: We asked for the trust average to include only opportunities that already have votes, for the rank formula to be `min(5, 1 + floor(votesCast / 10))`, and for anonymous visitors to see zeros. We kept the legacy opportunities even though they have no creator, and we removed the empty JavaScript file because no page uses it.
 
 **Integration & Learnings**: The user service calculates the statistics with counts and an aggregation; the profile and Verify views render them from the server. We learned how to run several queries in parallel and how to verify the database state after the cleanup.
+
+---
+
+## Week [7] Log Entry
+**Goal:** Add JWT + localStorage authentication in parallel to the existing session-based system without breaking anything.
+
+**Prompt**:"Review my current auth setup. I don't want to replace express-session, requireLogin or any of the existing login/register routes. Help me add a separate JWT system in parallel. Create only new files for it, make the smallest possible edits to existing files if absolutely necessary, and help me verify and correct step by step. Don't rewrite anything that already works."
+
+**Tool** : Opencode Big Pickle
+
+**The Human Audit & Modifications**: Corrected the approach multiple times when it suggested replacing the session auth with JWT. Insisted on keeping all existing routes, middleware and views untouched. Rejected ideas that involved modifying the current login, register or profile files. Made sure only new files were created for the JWT side, and that changes to server.js, package.json, .env and principalRoutes.js were strictly minimal. Asked for verification at every step, checked that /api/auth-jwt/me never returned passwordHash, and made sure the token was correctly saved to localStorage under scholarfind_jwt_token. Also tested that the old session flow remained intact after the changes.
+
+**Integration & Learnings**: Learned the difference between "adding" and "replacing" functionality. Understood how two auth systems can coexist without mixing them by using separate routes, middleware and files. Practiced asking for verification and corrections instead of blindly asking to implement everything, and learned to be strict about keeping working code untouched.

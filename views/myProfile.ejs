@@ -62,7 +62,7 @@
             </div>
         </div>
     </nav>
-    
+
     <div class="container">
 
         <div class="title-container">
@@ -90,7 +90,6 @@
                             <p class="mb-3"><%= user.email %></p>
 
                             <div class="col-12">
-                                <button class="btn btn-primary mt-auto w-100">Change info</button>
                                 <form action="/logout" method="POST" class="mt-2">
                                     <button type="submit" class="btn btn-outline-danger w-100">Log Out</button>
                                 </form>
@@ -99,57 +98,58 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- middle column -->
             <div class="
                     col-12
-                    
+
                     col-lg-5">
 
                 <h2>MY CONTRIBUTIONS</h2>
-                
-                <div class="row">
-                    <div class="col-6">
-                        <div class="card shadow-sm">
-                            <div class="card-body">
-                                <p class="card-text">OPPORTUNITIES SHARED: [<%= stats.shared %>]</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="card shadow-sm">
-                            <div class="card-body">
-                                <p class="card-text">OPPORTUNITIES VERIFIED: [<%= stats.verified %>]</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="card shadow my-3">
                     <div class="card-body d-flex flex-column">
+                        <p class="card-text">OPPORTUNITIES SHARED: [<%= stats.shared %>]</p>
                         <p class="card-text">OPPORTUNITIES VERIFIED: [<%= stats.verified %>]</p>
                         <p class="card-text">COMMUNITY TRUST SCORE:</p>
                         <div class="progress" >
                             <div class="progress-bar bg-success" style="width: <%= stats.trustScore %>%"><%= stats.trustScore %>%</div>
-                        </div> 
+                        </div>
                         <p class="card-text mt-3">VERIFIER RANK: [Level <%= stats.rank %>]</p>
-                    </div>
-                </div>
-                
-                <h2>MY SAVED OPPORTUNITIES</h2>
-                
-                <div class="card shadow card-margin">
-                    <div class="card-body d-flex flex-column">
-                        <div class="col">
-                            <div>
-                                <img class="activity-img"
-                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5Xv3ZzFHKycZAsxw-y8h4twqQrifM3de2Ae3z_DJGzw&s=10"
-                                    alt="FeaturedOportunity1">
+
+                        <div class="row mt-2">
+                            <div class="col-3">
+                                <p class="card-text">BADGES</p>
                             </div>
-                            <div>
-                                <h3>Open Doors 2026</h3>
-                                <p class="card-text">Bridge or parabolic shoot contest.</p>
+                            <div class="col-9">
+                                <div class="row">
+                                    <% const userBadges = (typeof stats.badges !== 'undefined' && Array.isArray(stats.badges)) ? stats.badges : []; %>
+                                    <% if (userBadges.length) { %>
+                                        <% userBadges.forEach(function(badge) { %>
+                                            <div class="col-5">
+                                                <img src="<%= badge.image %>" alt="<%= badge.label %>" class="badges-img">
+                                                <p><%= badge.label %></p>
+                                            </div>
+                                        <% }); %>
+                                    <% } %>
+                                </div>
                             </div>
+                        </div>
+
+                        <div class="d-flex mt-2" style="align-items: center; flex-wrap: wrap;">
+                            <p style="margin:0px;">NEXT RANK PROGRESS:</p>
+                            <% const filled = typeof stats.squaresFilled !== 'undefined' ? stats.squaresFilled : 0; %>
+                            <% const rankVal = typeof stats.currentRank !== 'undefined' ? stats.currentRank : stats.rank; %>
+                            <% for (let i = 0; i < 5; i++) { %>
+                                <% if (i < filled) { %>
+                                    <div class="green-squares"></div>
+                                <% } else { %>
+                                    <div class="green-squares-outline"></div>
+                                <% } %>
+                            <% } %>
+                            <% if (rankVal >= 5) { %>
+                                <p style="margin:0px 0px 0px 8px;">Max rank</p>
+                            <% } %>
                         </div>
                     </div>
                 </div>
@@ -159,61 +159,37 @@
             <!-- right column -->
             <div class="
                     col-12
-                    
+
                     col-lg-4">
-                <h2>RECENT ACTIVITY FEED</h2>
+                <h2>MY SHARED OPPORTUNITIES</h2>
 
-                <div class="card shadow card-margin mb-2">
-                    <div class="card-body d-flex flex-column">
-                        <div class="col">
-                            <div>
-                                <img class="activity-img"
-                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5Xv3ZzFHKycZAsxw-y8h4twqQrifM3de2Ae3z_DJGzw&s=10"
-                                    alt="FeaturedOportunity1">
-                            </div>
-                            <div>
-                                <h3>Open Doors 2026</h3>
-                                <p class="card-text">Bridge or parabolic shoot contest.</p>
+                <% if (typeof sharedOpportunities !== 'undefined' && sharedOpportunities.length > 0) { %>
+                    <% sharedOpportunities.forEach(function(o) { %>
+                    <div class="card shadow card-margin mb-2">
+                        <div class="card-body d-flex flex-column">
+                            <div class="col">
+                                <div class="d-flex align-items-center">
+                                    <img class="activity-img"
+                                        src="<%= o.imageUrl ? o.imageUrl : '/images/pfp.png' %>"
+                                        alt="<%= o.title %>">
+                                    <div class="ms-3">
+                                        <h3 class="h6 mb-0"><%= o.title %></h3>
+                                        <p class="card-text small mb-0">
+                                            <%= o.description ? o.description.substring(0, 60) : '' %>...
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="card shadow card-margin mb-2">
-                    <div class="card-body d-flex flex-column">
-                        <div class="col">
-                            <div>
-                                <img class="activity-img"
-                                    src="https://news.icpc.global/wp-content/uploads/2024/09/2024-scaled.jpg"
-                                    alt="FeaturedOportunity2">
-                            </div>
-                            <div>
-                                <h3>Interanational College Programming Contest</h3>
-                                <p class="card-text">Competitive programming contest.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card shadow card-margin mb-2">
-                    <div class="card-body d-flex flex-column">
-                        <div class="col">
-                            <div>
-                                <img class="activity-img"
-                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVIJM2xSN-bL4jCeesKQ9HvoPoMrelgyDTwZ0tZo7tXgwpCS3fIxkAqiA&s=10"
-                                    alt="FeaturedOportunity3">
-                            </div>
-                            <div>
-                                <h3>UNAM Admission exam</h3>
-                                <p class="card-text">Undergraduate entrance exam.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
+                    <% }); %>
+                <% } else { %>
+                    <p class="text-muted">You haven't shared any opportunities yet.</p>
+                <% } %>
             </div>
 
         </div>
-        
+
     </div>
 
     <hr>
@@ -222,5 +198,4 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
-
 </html>
