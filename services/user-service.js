@@ -23,6 +23,19 @@ export const getUserById = async (userId) => {
   return await User.findById(userId).select("name email votesCast").lean();
 };
 
+// Returns top verifiers for the community verification leaderboard.
+export const getLeaderboard = async (limit = 5) => {
+  return await User.find({ votesCast: { $gt: 0 } })
+    .sort({ votesCast: -1 })
+    .limit(limit)
+    .select("name votesCast")
+    .lean()
+    .catch((dbError) => {
+      console.error(dbError.message);
+      return [];
+    });
+};
+
 // Builds the statistics shown on MyProfile and Verify.
 export const getUserStats = async (userId) => {
   const [shared, verified, created, user, validVotes, invalidVotes] = await Promise.all([

@@ -3,7 +3,7 @@ import { findOpportunity, findOpportunities, findFeaturedOpportunities, buildOpp
 import { OPPORTUNITY_AREAS, OPPORTUNITY_GRADE_LEVELS, OPPORTUNITY_TYPES } from "../../models/Opportunity.js";
 import { parseExploreFilters } from "../middleware/parseExploreFilters.js";
 import { requireLogin } from "../middleware/requireLogin.js";
-import { getMyVotes, getUserById, getUserStats } from "../../services/user-service.js";
+import { getMyVotes, getUserById, getUserStats, getLeaderboard } from "../../services/user-service.js";
 
 
 const router = express.Router();
@@ -70,16 +70,20 @@ router.get('/',async (req,res,next)=>{
 })
 
 // Verify: shows the queue of pending contributions.
-.get('/verify',async (req,res,next)=>{
+router.get('/verify',async (req,res,next)=>{
   try {
-    const pendingOpportunities = (await findOpportunities({ status: 'Pending' })) || [];
+    const [pendingOpportunities, leaderboard] = await Promise.all([
+      (await findOpportunities({ status: 'Pending' })) || [],
+      getLeaderboard(5)
+    ]);
     const myVotes = await getMyVotes(req.session.userId, pendingOpportunities.map((o) => o._id));
     const stats = req.session.userId ? await getUserStats(req.session.userId) : null;
-    res.render("verify", { pendingOpportunities, myVotes, stats });
+    res.render("verify", { pendingOpportunities, myVotes, stats, leaderboard });
   } catch (err) {
     next(err);
   }
 })
+
 
 // Opportunity detail: loads one opportunity and passes its fields to the view.
 .get('/opportunity/:id',async (req,res,next)=>{
