@@ -187,48 +187,49 @@
                         </div>
                         
                     </div>
-                    <div class="card shadow card-margin card-h-margin">
-                        <div class="card-body d-flex flex-column">
-                            <p class="card-text">YOUR VERIFIER RANK: <%= stats.rank %></p>
+                <div class="card shadow card-margin card-h-margin">
+                    <div class="card-body d-flex flex-column">
+                        <p class="card-text">YOUR VERIFIER RANK: <%= stats.rank %></p>
 
-                            <div class="row">
-                                <div class="col-3">
-                                    <p class="card-text">BADGES</p>
-                                </div>
-                                <div class="col-9">
-                                    <div class="row">
-
-                                        <div class="col-5">
-                                            <img src="/images/Check.png" alt="Check" class="badges-img">
-                                            <p>Accuracy champion</p>
-                                        </div>
-                                        <div class="col-5">
-                                            <img src="/images/securityissue.png" alt="Security Image" class="badges-img">
-                                            <p>Community protector</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                
+                        <div class="row">
+                            <div class="col-3">
+                                <p class="card-text">BADGES</p>
                             </div>
-                            <div class="d-flex" style="align-items: center;">
-                                <p style="margin:0px;">NEXT RANK PROGRESS:</p>
-                                <% const filled = typeof stats.squaresFilled !== 'undefined' ? stats.squaresFilled : 0; %>
-                                <% const rankVal = typeof stats.currentRank !== 'undefined' ? stats.currentRank : stats.rank; %>
-                                <% for (let i = 0; i < 5; i++) { %>
-                                    <% if (i < filled) { %>
-                                        <div class="green-squares"></div>
-                                    <% } else { %>
-                                        <div class="green-squares-outline"></div>
+                            <div class="col-9">
+                                <div class="row">
+                                    <% const userBadges = (typeof stats.badges !== 'undefined' && Array.isArray(stats.badges)) ? stats.badges : []; %>
+                                    <% if (userBadges.length) { %>
+                                        <% userBadges.forEach(function(badge) { %>
+                                            <div class="col-5">
+                                                <img src="<%= badge.image %>" alt="<%= badge.label %>" class="badges-img">
+                                                <p><%= badge.label %></p>
+                                            </div>
+                                        <% }); %>
                                     <% } %>
-                                <% } %>
-                                <% if (rankVal >= 5) { %>
-                                    <p style="margin:0px 0px 0px 8px;">Max rank</p>
-                                <% } %>
-
+                                </div>
                             </div>
+                            
+                        </div>
+                        <div class="d-flex" style="align-items: center;">
+                            <p style="margin:0px;">NEXT RANK PROGRESS:</p>
+                            <% const filled = typeof stats.squaresFilled !== 'undefined' ? stats.squaresFilled : 0; %>
+                            <% const rankVal = typeof stats.currentRank !== 'undefined' ? stats.currentRank : stats.rank; %>
+                            <% for (let i = 0; i < 5; i++) { %>
+                                <% if (i < filled) { %>
+                                    <div class="green-squares"></div>
+                                <% } else { %>
+                                    <div class="green-squares-outline"></div>
+                                <% } %>
+                            <% } %>
+                            <% if (rankVal >= 5) { %>
+                                <p style="margin:0px 0px 0px 8px;">Max rank</p>
+                            <% } %>
 
                         </div>
+
                     </div>
+                </div>
+
                 <% } %>
                 
                 

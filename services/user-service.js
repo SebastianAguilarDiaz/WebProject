@@ -69,6 +69,49 @@ export const getUserStats = async (userId) => {
     squaresFilled = Math.min(5, Math.round((votesInCurrentLevel / 10) * 5));
   }
 
+  const totalVotes = (validVotes || 0) + (invalidVotes || 0);
+  const badges = [];
+
+  if ((votesCast || 0) >= 1) {
+    badges.push({
+      key: "first-steps",
+      label: "First steps",
+      image: "/images/first-steps.png"
+    });
+  }
+
+  if ((shared || 0) >= 1) {
+    badges.push({
+      key: "contributor",
+      label: "Contributor",
+      image: "/images/contributor.png"
+    });
+  }
+
+  if (totalVotes >= 10 && (validVotes || 0) / totalVotes >= 0.8) {
+    badges.push({
+      key: "accuracy-champion",
+      label: "Accuracy champion",
+      image: "/images/Check.png"
+    });
+  }
+
+  if ((invalidVotes || 0) >= 5) {
+    badges.push({
+      key: "community-protector",
+      label: "Community protector",
+      image: "/images/securityissue.png"
+    });
+  }
+
+  if ((votesCast || 0) >= 50) {
+    badges.push({
+      key: "veteran-verifier",
+      label: "Veteran verifier",
+      image: "/images/veteran-verifier.png"
+    });
+  }
+
   return {
     shared,
     verified,
@@ -78,6 +121,7 @@ export const getUserStats = async (userId) => {
     currentRank,
     validVotes,
     invalidVotes,
-    squaresFilled
+    squaresFilled,
+    badges
   };
 };
